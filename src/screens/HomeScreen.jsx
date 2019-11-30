@@ -1,17 +1,28 @@
 import React from 'react';
-import { H1, Classes } from '@blueprintjs/core';
+import PropTypes from 'prop-types';
 import translateString from '../utils/StringHelper';
+import MainContent from '../components/MainContent';
 
-const HomeScreen = () => {
+const HomeScreen = ({ style }) => {
   const t = translateString;
+
   return (
-    <div className={Classes.RUNNING_TEXT}>
-      <div className="mainContent">
-        <H1>{t('Home-Screen-Welcome-Header')}</H1>
-        <p>{t('Home-Screen-Placeholder')}</p>
-      </div>
-    </div>
+    <MainContent
+      header={t('Home-Screen-Welcome-Header')}
+      body={t('Home-Screen-Placeholder')}
+      style={style}
+    />
   );
 };
+
+HomeScreen.propTypes = {
+  style: PropTypes.shape({
+    primary: PropTypes.string,
+    secondary: PropTypes.string,
+    action1: PropTypes.string,
+    action2: PropTypes.string,
+    action3: PropTypes.string,
+  }).isRequired,
+}
 
 export default HomeScreen;

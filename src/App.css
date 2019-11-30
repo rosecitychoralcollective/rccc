@@ -7,6 +7,41 @@ html {
   color: #182026;
 }
 
+.scheme1 {
+  background: #D8E1E8;
+  color: #182026;
+}
+
+.scheme2 {
+  background: #C4D2D3;
+  color: #091B34;
+}
+
+.scheme3 {
+  background: #091B34;
+  color: #C4D2D3;
+}
+
+.markColorPrim {
+  color: #182026;
+}
+
+.markColorSec {
+  color: #dd22bb;
+}
+
+.markColorAct1 {
+  color: #22bb22;
+}
+
+.markColorAct2 {
+  color: #cfd149;
+}
+
+.markColorAct3 {
+  color: #3838ef;
+}
+
 .mainContent {
   padding: 05%;
 }

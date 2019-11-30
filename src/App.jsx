@@ -1,13 +1,11 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header';
-import HomeScreen from './screens/HomeScreen';
+import Navigator from './components/Navigator';
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <HomeScreen />
+      <Navigator />
     </div>
   );
 }

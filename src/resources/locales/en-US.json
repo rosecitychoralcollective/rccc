@@ -1,4 +1,8 @@
 {
   "Home-Screen-Welcome-Header": "Welcome to Rose City Choral Collective",
-  "Home-Screen-Placeholder": "We are a fun group of nerds here to sing and dance"
+  "Home-Screen-Placeholder": "We are a fun group of nerds here to sing and dance",
+  "About-Screen-Header": "About Us",
+  "About-Screen-Body": "We have a bunch of officers. Here they are!",
+  "Event-Screen-Header": "Supposedly we sing",
+  "Event-Screen-Body": "I've never seen it though"
 }
