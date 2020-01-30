@@ -1,13 +1,17 @@
 import React from 'react';
 import './App.css';
-import Navigator from './components/Navigator';
+import { useRoutes } from 'hookrouter';
 
-function App() {
+import Header from './components/Header';
+import routes from './resources/routes';
+
+export default function App() {
+  const routeMatch = useRoutes(routes);
+
   return (
     <div className="App">
-      <Navigator />
+      <Header />
+      { routeMatch }
     </div>
   );
 }
-
-export default App;
