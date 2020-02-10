@@ -4,7 +4,7 @@ import {
 } from '@material-ui/core';
 import translateString from '../utils/StringHelper';
 
-const EventCard = ({ image, handleClick }) => {
+const EventCard = ({ image, handleClick, data }) => {
   const t = translateString;
 
   return (
@@ -19,16 +19,16 @@ const EventCard = ({ image, handleClick }) => {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Fall Concert
+            {data.title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {t('Event-Screen-Link')}
+            {data.description}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" onClick={handleClick}>
-        Learn More
+        <Button size="small" color="primary" onClick={() => handleClick(data.id)}>
+          {t('EventList-Screen-Link')}
         </Button>
       </CardActions>
     </Card>

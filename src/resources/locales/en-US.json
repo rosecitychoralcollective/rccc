@@ -5,9 +5,9 @@
   "Event-Detail-Header": "This is a cool event",
   "Event-Detail-Body": "Featuring Molly, Holly, Hollie, Olly, Squally, and Reginald P Linux",
   "About-Screen-Body": "We have a bunch of officers. Here they are!",
-  "Event-Screen-Header": "Supposedly we sing",
-  "Event-Screen-Body": "I've never seen it though",
-  "Event-Screen-Link": "Come watch us sing at our fall concert it'll be fun",
+  "EventList-Screen-Link": "Learn More",
+  "EventsPage-Upcoming-Header": "Upcoming Events!",
+  "EventsPage-Previous-Header": "Previous Events...",
   "Join-Screen-Header": "Join us!",
   "Join-Screen-Body": "Or don't. Whatevs"
 }

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { AppBar, Tab, Tabs } from '@material-ui/core';
 import { navigate, usePath } from 'hookrouter';
-import _ from 'lodash';
 
 const Header = () => {
   const [tabIndex, setIndex] = useState(0);
@@ -35,7 +34,7 @@ const Header = () => {
   window.onpopstate = () => {
     const routeIndex = tabs.findIndex((t) => t.route === currentPath);
     setIndex(routeIndex);
-  }
+  };
 
   return (
     <div>
