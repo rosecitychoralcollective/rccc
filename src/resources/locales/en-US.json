@@ -8,6 +8,14 @@
   "EventList-Screen-Link": "Learn More",
   "EventsPage-Upcoming-Header": "Upcoming Events!",
   "EventsPage-Previous-Header": "Previous Events...",
+  "JoinPage-Preference-Dropdown-Email": "Email",
+  "JoinPage-Preference-Dropdown-Helptext": "How should we contact you?",
+  "JoinPage-Preference-Dropdown-Phone": "Phone",
+  "JoinPage-Textfield-FirstName": "First Name",
+  "JoinPage-Textfield-LastName": "Last Name",
+  "JoinPage-Textfield-Email": "Email Address",
+  "JoinPage-Textfield-Phone": "Phone Number",
+  "JoinPage-Submit-Button": "Click me!",
   "Join-Screen-Header": "Join us!",
   "Join-Screen-Body": "Or don't. Whatevs"
 }
