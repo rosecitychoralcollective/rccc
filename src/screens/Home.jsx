@@ -2,15 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import translateString from '../utils/StringHelper';
 import MainContent from '../components/MainContent';
+import banner from '../resources/assets/banner.jpg';
 
 const HomeScreen = () => {
   const t = translateString;
 
   return (
-    <MainContent
-      header={t('Home-Screen-Welcome-Header')}
-      body={t('Home-Screen-Placeholder')}
-    />
+    <div>
+      <MainContent
+        header={t('Home-Screen-Welcome-Header')}
+        body={t('Home-Screen-Placeholder')}
+      />
+      <h3>
+        A Message from our director:
+      </h3>
+      <p>
+        Ur all wonderful people. Keep doing you.
+      </p>
+      <img src={banner} alt="fake banner" />
+    </div>
   );
 };
 
