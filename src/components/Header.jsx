@@ -1,9 +1,21 @@
 import React, { useState } from 'react';
-import { AppBar, Tab, Tabs } from '@material-ui/core';
+import {
+  AppBar, IconButton, Tab, Tabs, MenuItem, Menu,
+} from '@material-ui/core';
+import MoreIcon from '@material-ui/icons/MoreVert';
+import { makeStyles } from '@material-ui/styles';
 import { navigate, usePath } from 'hookrouter';
 
 const Header = () => {
   const [tabIndex, setIndex] = useState(0);
+  const [currentStyle, setCurrentStyle] = useState({ background: '#aa1166', color: '#ffdddd' });
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const styles = [
+    { background: '#aa1166', color: '#ffdddd' },
+    { background: '#1166aa', color: '#aaaaaa' },
+    { background: '#66aa11', color: '#000000' },
+  ];
 
   const tabs = [
     {
@@ -31,20 +43,63 @@ const Header = () => {
 
   const currentPath = usePath(false);
 
-  window.onpopstate = () => {
+  const adjustHighlighting = () => {
     const routeIndex = tabs.findIndex((t) => t.route === currentPath);
     setIndex(routeIndex);
   };
 
+  /** This ensures that the nav bar has the correct highlighting when the back button is pressed */
+  window.onpopstate = () => {
+    adjustHighlighting();
+  };
+
+
+  const useStyles = makeStyles({
+    root: currentStyle,
+  });
+
+  const classes = useStyles();
+
+  const menuItems = [
+    'Style 1',
+    'Style 2',
+    'Style 3',
+  ];
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleMenuClick = (index) => {
+    setCurrentStyle(styles[index]);
+    handleClose();
+  };
+
   return (
     <div>
-      <AppBar color="primary" className="navBar">
+      <AppBar className={classes.root}>
         <Tabs
           value={tabIndex}
           onChange={handleChange}
           aria-label="tab bar"
         >
           {tabs.map((tab) => <Tab key={tab.title} label={tab.title} />)}
+          <IconButton aria-controls="simple-menu" aria-haspopup="true" edge="end" onClick={handleClick} color="inherit">
+            <MoreIcon />
+          </IconButton>
+          <Menu
+            id="menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            {menuItems.map((name, index) => <MenuItem key={name} onClick={() => handleMenuClick(index)}>{name}</MenuItem>)}
+          </Menu>
         </Tabs>
       </AppBar>
     </div>
