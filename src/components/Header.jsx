@@ -50,7 +50,7 @@ const Header = () => {
 
 
   const useStyles = makeStyles({
-    root: style,
+    ...style,
   });
 
   const classes = useStyles();
@@ -81,6 +81,8 @@ const Header = () => {
           value={tabIndex}
           onChange={handleChange}
           aria-label="tab bar"
+          classes={{indicator: classes.indicator}}
+          // className={classes.tabs}
         >
           {tabs.map((tab) => <Tab key={tab.title} label={tab.title} />)}
           <IconButton aria-controls="simple-menu" aria-haspopup="true" edge="end" onClick={handleClick} color="inherit">

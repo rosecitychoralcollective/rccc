@@ -2,9 +2,33 @@ import { useState } from 'react';
 
 const useStyle = (index) => {
   const availableStyles = [
-    { background: '#aa1166', color: '#ffffff' },
-    { background: '#1166aa', color: '#ffffff' },
-    { background: '#66aa11', color: '#000000' },
+    {
+      root: {
+        background: '#aa1166',
+        color: '#ffffff',
+      },
+      indicator: {
+        backgroundColor: '#123456',
+      },
+    },
+    {
+      root: {
+        background: '#1166aa',
+        color: '#ffffff',
+      },
+      indicator: {
+        backgroundColor: '#987654',
+      },
+    },
+    {
+      root: {
+        background: '#66aa11',
+        color: '#000000',
+      },
+      indicator: {
+        backgroundColor: '#ffffff',
+      },
+    },
   ];
 
   const [style, setStyle] = useState(availableStyles[0]);
