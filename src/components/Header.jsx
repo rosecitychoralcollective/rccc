@@ -5,17 +5,12 @@ import {
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { makeStyles } from '@material-ui/styles';
 import { navigate, usePath } from 'hookrouter';
+import useStyle from '../hooks/useStyle';
 
 const Header = () => {
   const [tabIndex, setIndex] = useState(0);
-  const [currentStyle, setCurrentStyle] = useState({ background: '#aa1166', color: '#ffdddd' });
   const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const styles = [
-    { background: '#aa1166', color: '#ffffff' },
-    { background: '#1166aa', color: '#ffffff' },
-    { background: '#66aa11', color: '#000000' },
-  ];
+  const [style, setStyle] = useStyle();
 
   const tabs = [
     {
@@ -55,7 +50,7 @@ const Header = () => {
 
 
   const useStyles = makeStyles({
-    root: currentStyle,
+    root: style,
   });
 
   const classes = useStyles();
@@ -75,7 +70,7 @@ const Header = () => {
   };
 
   const handleMenuClick = (index) => {
-    setCurrentStyle(styles[index]);
+    setStyle(index);
     handleClose();
   };
 
