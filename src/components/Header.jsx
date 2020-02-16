@@ -12,8 +12,8 @@ const Header = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const styles = [
-    { background: '#aa1166', color: '#ffdddd' },
-    { background: '#1166aa', color: '#aaaaaa' },
+    { background: '#aa1166', color: '#ffffff' },
+    { background: '#1166aa', color: '#ffffff' },
     { background: '#66aa11', color: '#000000' },
   ];
 
