@@ -81,7 +81,7 @@ const Header = () => {
           value={tabIndex}
           onChange={handleChange}
           aria-label="tab bar"
-          classes={{indicator: classes.indicator}}
+          classes={{ indicator: classes.indicator }}
           // className={classes.tabs}
         >
           {tabs.map((tab) => <Tab key={tab.title} label={tab.title} />)}

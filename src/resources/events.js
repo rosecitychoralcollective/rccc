@@ -1,21 +1,21 @@
 const events = [
   {
     id: 0,
-    title: 'My cool event',
-    description: 'Singing but no dancing',
-    date: 'October 31st at Midnight',
+    title: 'Halloween spooktacular',
+    description: 'Come fight witches, ghouls, vampires, more ghouls, and maybe scream with a banshee',
+    date: '10/31/20 7:00pm',
   },
   {
     id: 1,
-    title: 'My lame event',
-    description: 'Full of hollys',
-    date: 'April 1st at 9am',
+    title: 'April fool\'s concert',
+    description: 'You\'d think we\'d be singing but mostly we\'re just going to pie people in the face',
+    date: '4/1/20 9:00am',
   },
   {
     id: 2,
-    title: 'Another thing',
-    description: 'stuff',
-    date: 'August 1 4pm',
+    title: 'End of summer Jamboree',
+    description: 'Come see Lyn show off her banjo skills!',
+    date: '8/1/21 4:30pm',
   },
 ];
 
