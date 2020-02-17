@@ -29,6 +29,14 @@ const Header = () => {
       title: 'about',
       route: '/about',
     },
+    {
+      title: 'support',
+      route: '/support',
+    },
+    {
+      title: 'contact',
+      route: '/contact',
+    },
   ];
 
   const handleChange = (event, newValue) => {
@@ -73,6 +81,8 @@ const Header = () => {
     setStyle(index);
     handleClose();
   };
+
+  console.log(classes.tab);
 
   return (
     <div>
