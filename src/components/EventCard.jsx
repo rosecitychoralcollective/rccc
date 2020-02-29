@@ -41,7 +41,7 @@ const EventCard = ({ image, handleClick, data }) => {
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary" onClick={() => handleClick(data.id)}>
-          {t('EventList-Screen-Link')}
+          {t('EventList-Page-Link')}
         </Button>
       </CardActions>
     </Card>

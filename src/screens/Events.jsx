@@ -19,10 +19,10 @@ const Events = () => {
   return (
     <div>
       <Paper style={{ padding: 25 }} />
-      <h1>{ t('EventsPage-Upcoming-Header') }</h1>
+      <h1>{ t('EventList-Page-Upcoming-Header') }</h1>
       <EventCard image={cat} handleClick={handleClick} data={events[0]} />
       <br />
-      <h1>{ t('EventsPage-Previous-Header') }</h1>
+      <h1>{ t('EventList-Page-Previous-Header') }</h1>
       {pastEvents.map((e) => (
         <EventCard
           key={e.title}

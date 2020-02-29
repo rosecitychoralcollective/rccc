@@ -1,80 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   AppBar, IconButton, Tab, Tabs, MenuItem, Menu,
 } from '@material-ui/core';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { makeStyles } from '@material-ui/styles';
-import { navigate, usePath } from 'hookrouter';
 import useStyle from '../hooks/useStyle';
 import useWindowSize from '../hooks/useWindowSize';
-import translateString from '../utils/StringHelper';
+import useTabs from '../hooks/useTabs';
 
 const Header = () => {
-  const t = translateString;
-  const [tabIndex, setIndex] = useState(0);
+  const [tabs, tabIndex, changeTabs] = useTabs();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [style, setStyle] = useStyle();
-
-  const TITLE_SUFFIX = `| ${t('Organization-Name')}`;
-
-  const [title, setTitle] = useState(`${t('Home-Page-Title')} ${TITLE_SUFFIX}`);
-
-  const tabs = [
-    {
-      name: 'home',
-      route: '/',
-      title: t('Home-Page-Title'),
-    },
-    {
-      name: 'join',
-      route: '/join',
-      title: t('Join-Page-Title'),
-    },
-    {
-      name: 'events',
-      route: '/events',
-      title: t('EventList-Page-Title'),
-    },
-    {
-      name: 'about',
-      route: '/about',
-      title: t('About-Page-Title'),
-    },
-    {
-      name: 'support',
-      route: '/support',
-      title: t('Support-Page-Title'),
-    },
-    {
-      name: 'contact',
-      route: '/contact',
-      title: t('Contact-Page-Title'),
-    },
-  ];
-
-  const handleTabClick = (_, newValue) => {
-    const currentTab = tabs[newValue];
-    navigate(currentTab.route);
-    setIndex(newValue);
-    setTitle(`${currentTab.title} ${TITLE_SUFFIX}`);
-  };
-
-  useEffect(() => {
-    document.title = title;
-  });
-
-  const currentPath = usePath(false);
-
-  const adjustHighlighting = () => {
-    const routeIndex = tabs.findIndex((t) => t.route === currentPath);
-    setIndex(routeIndex);
-    setTitle(`${tabs[routeIndex].title} ${TITLE_SUFFIX}`);
-  };
-
-  /** This ensures that the nav bar has the correct highlighting when the back button is pressed */
-  window.onpopstate = () => {
-    adjustHighlighting();
-  };
 
   const useStyles = makeStyles({
     ...style,
@@ -111,7 +48,7 @@ const Header = () => {
             <AppBar className={classes.root}>
               <Tabs
                 value={tabIndex}
-                onChange={handleTabClick}
+                onChange={changeTabs}
                 aria-label="tab bar"
                 variant="scrollable"
                 scrollButtons="auto"
