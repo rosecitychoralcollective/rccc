@@ -64,6 +64,7 @@ const Header = () => {
   const adjustHighlighting = () => {
     const routeIndex = tabs.findIndex((t) => t.route === currentPath);
     setIndex(routeIndex);
+    setTitle(tabs[routeIndex].title);
   };
 
   /** This ensures that the nav bar has the correct highlighting when the back button is pressed */
