@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import translateString from '../utils/StringHelper';
 import MainContent from '../components/MainContent';
@@ -10,8 +10,8 @@ const HomeScreen = () => {
   return (
     <div>
       <MainContent
-        header={t('Home-Screen-Welcome-Header')}
-        body={t('Home-Screen-Placeholder')}
+        header={t('Home-Page-Welcome-Header')}
+        body={t('Home-Page-Placeholder')}
       />
       <h3>
         A Message from our director:

@@ -7,52 +7,56 @@ import { makeStyles } from '@material-ui/styles';
 import { navigate, usePath } from 'hookrouter';
 import useStyle from '../hooks/useStyle';
 import useWindowSize from '../hooks/useWindowSize';
+import translateString from '../utils/StringHelper';
 
 const Header = () => {
+  const t = translateString;
   const [tabIndex, setIndex] = useState(0);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [style, setStyle] = useStyle();
+
+  const TITLE_SUFFIX = `| ${t('Organization-Name')}`;
+
+  const [title, setTitle] = useState(`${t('Home-Page-Title')} ${TITLE_SUFFIX}`);
 
   const tabs = [
     {
       name: 'home',
       route: '/',
-      title: 'Rose City Choral Collective',
+      title: t('Home-Page-Title'),
     },
     {
       name: 'join',
       route: '/join',
-      title: 'Join us',
+      title: t('Join-Page-Title'),
     },
     {
       name: 'events',
       route: '/events',
-      title: 'Upcoming events',
+      title: t('EventList-Page-Title'),
     },
     {
       name: 'about',
       route: '/about',
-      title: 'About us',
+      title: t('About-Page-Title'),
     },
     {
       name: 'support',
       route: '/support',
-      title: 'Give us cash',
+      title: t('Support-Page-Title'),
     },
     {
       name: 'contact',
       route: '/contact',
-      title: 'Get in touch',
+      title: t('Contact-Page-Title'),
     },
   ];
-
-  const [title, setTitle] = useState('Rose City Choral Collective');
 
   const handleTabClick = (_, newValue) => {
     const currentTab = tabs[newValue];
     navigate(currentTab.route);
     setIndex(newValue);
-    setTitle(currentTab.title);
+    setTitle(`${currentTab.title} ${TITLE_SUFFIX}`);
   };
 
   useEffect(() => {
@@ -64,7 +68,7 @@ const Header = () => {
   const adjustHighlighting = () => {
     const routeIndex = tabs.findIndex((t) => t.route === currentPath);
     setIndex(routeIndex);
-    setTitle(tabs[routeIndex].title);
+    setTitle(`${tabs[routeIndex].title} ${TITLE_SUFFIX}`);
   };
 
   /** This ensures that the nav bar has the correct highlighting when the back button is pressed */

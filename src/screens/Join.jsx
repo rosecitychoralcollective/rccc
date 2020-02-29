@@ -53,25 +53,25 @@ const JoinScreen = () => {
   return (
     <div>
       <MainContent
-        header={t('Join-Screen-Header')}
-        body={t('Join-Screen-Body')}
+        header={t('Join-Page-Header')}
+        body={t('Join-Page-Body')}
       />
       <form className="select" onSubmit={handleSubmit} noValidate autoComplete="off">
 
         <FormControl>
-          <TextField required id="fname" name="firstName" label={t('JoinPage-Textfield-FirstName')} value={data.firstName} onChange={onChange} />
+          <TextField required id="fname" name="firstName" label={t('Join-Page-Textfield-FirstName')} value={data.firstName} onChange={onChange} />
         </FormControl>
         <FormControl>
-          <TextField required id="lname" name="lastName" label={t('JoinPage-Textfield-LastName')} value={data.lastName} onChange={onChange} />
+          <TextField required id="lname" name="lastName" label={t('Join-Page-Textfield-LastName')} value={data.lastName} onChange={onChange} />
         </FormControl>
         <FormControl>
-          <TextField required id="email" name="email" label={t('JoinPage-Textfield-Email')} value={data.email} onChange={onChange} />
+          <TextField required id="email" name="email" label={t('Join-Page-Textfield-Email')} value={data.email} onChange={onChange} />
         </FormControl>
         <FormControl>
           <Select required id="pref" name="pref" label="Preference" value={data.pref} onChange={onChange}>
-            <MenuItem disabled value="helptext">{t('JoinPage-Preference-Dropdown-Helptext')}</MenuItem>
-            <MenuItem value="phone">{ t('JoinPage-Preference-Dropdown-Phone') }</MenuItem>
-            <MenuItem value="email">{ t('JoinPage-Preference-Dropdown-Email') }</MenuItem>
+            <MenuItem disabled value="helptext">{t('Join-Page-Preference-Dropdown-Helptext')}</MenuItem>
+            <MenuItem value="phone">{ t('Join-Page-Preference-Dropdown-Phone') }</MenuItem>
+            <MenuItem value="email">{ t('Join-Page-Preference-Dropdown-Email') }</MenuItem>
           </Select>
         </FormControl>
         { getContactField() }
@@ -79,7 +79,7 @@ const JoinScreen = () => {
           <TextField multiline id="info" name="info" label="Any additional information?" value={data.info} onChange={onChange} />
         </FormControl>
         <Button type="submit" value="Submit">
-          { t('JoinPage-Submit-Button') }
+          { t('Join-Page-Submit-Button') }
         </Button>
       </form>
     </div>
