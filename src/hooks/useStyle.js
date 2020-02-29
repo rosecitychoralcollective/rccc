@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 const useStyle = () => {
-  const tab = { width: 200 };
   const availableStyles = [
     {
       root: {
@@ -11,7 +10,6 @@ const useStyle = () => {
       indicator: {
         backgroundColor: '#123456',
       },
-      tab,
     },
     {
       root: {
@@ -21,7 +19,6 @@ const useStyle = () => {
       indicator: {
         backgroundColor: '#987654',
       },
-      tab,
     },
     {
       root: {
@@ -31,7 +28,6 @@ const useStyle = () => {
       indicator: {
         backgroundColor: '#ffffff',
       },
-      tab,
     },
   ];
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   AppBar, IconButton, Tab, Tabs, MenuItem, Menu,
 } from '@material-ui/core';
@@ -6,6 +6,7 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import { makeStyles } from '@material-ui/styles';
 import { navigate, usePath } from 'hookrouter';
 import useStyle from '../hooks/useStyle';
+import useWindowSize from '../hooks/useWindowSize';
 
 const Header = () => {
   const [tabIndex, setIndex] = useState(0);
@@ -14,35 +15,49 @@ const Header = () => {
 
   const tabs = [
     {
-      title: 'home',
+      name: 'home',
       route: '/',
+      title: 'Rose City Choral Collective',
     },
     {
-      title: 'join',
+      name: 'join',
       route: '/join',
+      title: 'Join us',
     },
     {
-      title: 'events',
+      name: 'events',
       route: '/events',
+      title: 'Upcoming events',
     },
     {
-      title: 'about',
+      name: 'about',
       route: '/about',
+      title: 'About us',
     },
     {
-      title: 'support',
+      name: 'support',
       route: '/support',
+      title: 'Give us cash',
     },
     {
-      title: 'contact',
+      name: 'contact',
       route: '/contact',
+      title: 'Get in touch',
     },
   ];
 
-  const handleChange = (event, newValue) => {
-    navigate(tabs[newValue].route);
+  const [title, setTitle] = useState('Rose City Choral Collective');
+
+  const handleTabClick = (_, newValue) => {
+    const currentTab = tabs[newValue];
+    navigate(currentTab.route);
     setIndex(newValue);
+    setTitle(currentTab.title);
   };
+
+  useEffect(() => {
+    document.title = title;
+  });
 
   const currentPath = usePath(false);
 
@@ -55,7 +70,6 @@ const Header = () => {
   window.onpopstate = () => {
     adjustHighlighting();
   };
-
 
   const useStyles = makeStyles({
     ...style,
@@ -82,33 +96,50 @@ const Header = () => {
     handleClose();
   };
 
-  console.log(classes.tab);
+  const [width] = useWindowSize();
 
   return (
     <div>
-      <AppBar className={classes.root}>
-        <Tabs
-          value={tabIndex}
-          onChange={handleChange}
-          aria-label="tab bar"
-          classes={{ indicator: classes.indicator }}
-          // className={classes.tabs}
-        >
-          {tabs.map((tab) => <Tab key={tab.title} label={tab.title} />)}
-          <IconButton aria-controls="simple-menu" aria-haspopup="true" edge="end" onClick={handleClick} color="inherit">
-            <MoreIcon />
-          </IconButton>
-          <Menu
-            id="menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            {menuItems.map((name, index) => <MenuItem key={name} onClick={() => handleMenuClick(index)}>{name}</MenuItem>)}
-          </Menu>
-        </Tabs>
-      </AppBar>
+      {
+        width >= 0
+          ? (
+            <AppBar className={classes.root}>
+              <Tabs
+                value={tabIndex}
+                onChange={handleTabClick}
+                aria-label="tab bar"
+                variant="scrollable"
+                scrollButtons="auto"
+                classes={{ indicator: classes.indicator }}
+              >
+                {
+                  tabs.map((tab) => (
+                    <Tab key={tab.name} label={tab.name} />
+                  ))
+                }
+                <IconButton aria-controls="simple-menu" aria-haspopup="true" edge="end" onClick={handleClick} color="inherit">
+                  <MoreIcon />
+                </IconButton>
+                <Menu
+                  id="menu"
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  {menuItems.map((name, index) => <MenuItem key={name} onClick={() => handleMenuClick(index)}>{name}</MenuItem>)}
+                </Menu>
+              </Tabs>
+            </AppBar>
+          )
+          : (
+            <AppBar className={classes.root}>
+              <IconButton aria-controls="simple-menu" aria-haspopup="true" edge="end" onClick={handleClick} color="inherit">
+                <MoreIcon />
+              </IconButton>
+            </AppBar>
+          )
+      }
     </div>
   );
 };
