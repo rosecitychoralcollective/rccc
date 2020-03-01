@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import translateString from '../utils/StringHelper';
 import MainContent from '../components/MainContent';
 import banner from '../resources/assets/banner.jpg';
+import useTitle from '../hooks/useTitle';
 
 const HomeScreen = () => {
   const t = translateString;
+  useTitle(t('Home-Page-Title'));
 
   return (
     <div>

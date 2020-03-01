@@ -3,9 +3,11 @@ import { Avatar } from '@material-ui/core';
 import translateString from '../utils/StringHelper';
 import cat from '../resources/assets/cat.jpg';
 import group from '../resources/assets/fakesinging.jpg';
+import useTitle from '../hooks/useTitle';
 
 const About = () => {
   const t = translateString;
+  useTitle(t('About-Page-Title'));
 
   return (
     <div className="mainContent">

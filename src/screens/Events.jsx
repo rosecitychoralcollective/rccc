@@ -4,11 +4,13 @@ import { navigate } from 'hookrouter';
 import cat from '../resources/assets/cat.jpg';
 import cat2 from '../resources/assets/cat2.jpg';
 import translateString from '../utils/StringHelper';
+import useTitle from '../hooks/useTitle';
 import EventCard from '../components/EventCard';
 import events from '../resources/events';
 
 const Events = () => {
   const t = translateString;
+  useTitle(t('EventList-Page-Title'));
 
   const handleClick = (e) => {
     navigate(`/eventdetail/${e}`);

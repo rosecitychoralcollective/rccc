@@ -5,9 +5,11 @@ import {
 } from '@material-ui/core';
 import MainContent from '../components/MainContent';
 import translateString from '../utils/StringHelper';
+import useTitle from '../hooks/useTitle';
 
 const JoinScreen = () => {
   const t = translateString;
+  useTitle(t('Join-Page-Title'));
 
   const [data, setData] = useState({
     firstName: '',

@@ -1,9 +1,10 @@
 import React from 'react';
 import { getEventById } from '../resources/events';
+import useTitle from '../hooks/useTitle';
 
 const EventDetail = ({ id }) => {
-  console.log(`About to get event with id: ${id}`);
   const event = getEventById(id);
+  useTitle(event.title);
 
   return (
     <div style={{ margin: 80 }}>
