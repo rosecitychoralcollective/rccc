@@ -7,11 +7,12 @@ const Support = () => {
   useTitle(t('Support-Page-Title'));
 
   return (
-    <div style={{ margin: 80 }}>
+    <div style={{ padding: 25 }}>
       <h1>Dues</h1>
       <p>Yo hook us up wit dat money fam.</p>
       <h1>Donate to us</h1>
       <p>Same as above but you haven&apos;t purchased singing rights.</p>
+      <h2>“to speak to someone about donating time or items, please contact us (with link to contact page)</h2>
     </div>
   );
 };
