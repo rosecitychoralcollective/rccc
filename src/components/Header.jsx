@@ -69,7 +69,14 @@ const Header = () => {
                   open={Boolean(anchorEl)}
                   onClose={handleClose}
                 >
-                  {menuItems.map((name, index) => <MenuItem key={name} onClick={() => handleMenuClick(index)}>{name}</MenuItem>)}
+                  {menuItems.map((name, index) => (
+                    <MenuItem
+                      key={name}
+                      onClick={() => handleMenuClick(index)}
+                    >
+                      {name}
+                    </MenuItem>
+                  ))}
                 </Menu>
               </Tabs>
             </AppBar>

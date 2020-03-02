@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Button, FormControl, FormHelperText, MenuItem, Select, TextField,
+  Button, FormControl, IconButton, MenuItem, Select, Snackbar, TextField,
 } from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
 import { makeStyles } from '@material-ui/styles';
 import translateString from '../utils/StringHelper';
 import useTitle from '../hooks/useTitle';
@@ -30,75 +31,148 @@ const JoinScreen = () => {
 
   const classes = useStyles();
 
-  const [data, setData] = useState({
-    firstName: '',
-    lastName: '',
-    pref: 'helptext',
-    info: '',
-  });
+  const fieldDefault = [
+    {
+      id: 'fname',
+      name: 'firstName',
+      label: 'Join-Page-Textfield-FirstName',
+      value: '',
+      required: true,
+      validated: true,
+      visible: true,
+    },
+    {
+      id: 'lname',
+      name: 'lastName',
+      label: 'Join-Page-Textfield-LastName',
+      value: '',
+      required: true,
+      validated: true,
+      visible: true,
+    },
+    {
+      id: 'info',
+      name: 'info',
+      label: 'Join-Page-Textfield-Infofield',
+      value: '',
+      required: false,
+      validated: true,
+      visible: true,
+    },
+    {
+      id: 'contact',
+      name: 'contact',
+      label: 'Join-Page-Textfield-Phone',
+      value: '',
+      required: true,
+      validated: true,
+      visible: false,
+    },
+  ];
+
+  const [fields, setFields] = useState(fieldDefault);
+
+  const getContactField = (value) => {
+    const formFields = [...fields];
+    const lastField = formFields.pop();
+    switch (value) {
+      case 'phone':
+        lastField.label = 'Join-Page-Textfield-Phone';
+        lastField.visible = true;
+        break;
+      case 'email':
+        lastField.label = 'Join-Page-Textfield-Email';
+        lastField.visible = true;
+        break;
+      default:
+        break;
+    }
+    formFields.push(lastField);
+    setFields(formFields);
+  };
+
+  const [open, setOpen] = useState(false);
 
   const onChange = (event) => {
     const { target } = event;
     const { value } = target;
     const { name } = target;
-    const oldData = { ...data };
-    oldData[name] = value;
-    setData(oldData);
+    if (name === 'pref') {
+      getContactField(value);
+    } else {
+      const oldFields = [...fields];
+      const field = oldFields.find((f) => f.name === name);
+      const fieldIndex = oldFields.indexOf(field);
+      field.value = value;
+      oldFields[fieldIndex] = field;
+      setFields(oldFields);
+    }
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(data);
+    const isFormComplete = fields.every((field) => {
+      const value = field.value.replace(/\s/g, '');
+      return field.required ? value.length > 0 : true;
+    });
+    if (isFormComplete) {
+      setOpen(true);
+      setFields(fieldDefault);
+    }
   };
 
-  const getContactField = () => {
-    switch (data.pref) {
-      case 'phone':
-        return (
-          <FormControl className={classes.formField}>
-            <TextField required id="phone" name="phone" label={t('Join-Page-Textfield-Phone')} value={data.phone} onChange={onChange} />
-          </FormControl>
-        );
-      case 'email':
-        return (
-          <FormControl className={classes.formField}>
-            <TextField required id="email" name="email" label={t('Join-Page-Textfield-Email')} value={data.email} onChange={onChange} />
-          </FormControl>
-        );
-      default:
-        break;
-    }
-    return (<div />);
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === 'clickaway') return;
+    setOpen(false);
   };
 
   return (
-    <div style={{ padding: 25}}>
+    <div style={{ padding: 25 }}>
       <h1>{ t('Join-Page-Header') }</h1>
       <h4>{ t('Join-Page-Body') }</h4>
       <form className="select" onSubmit={handleSubmit} noValidate autoComplete="off">
-
+        {fields.map((field) => {
+          if (field.visible) {
+            return (
+              <FormControl key={field.id} className={classes.formField}>
+                <TextField
+                  required={field.required}
+                  id={field.id}
+                  name={field.name}
+                  label={t(field.label)}
+                  value={field.value}
+                  onChange={onChange}
+                />
+              </FormControl>
+            );
+          }
+        })}
         <FormControl className={classes.formField}>
-          <TextField required id="fname" name="firstName" label={t('Join-Page-Textfield-FirstName')} value={data.firstName} onChange={onChange} />
-        </FormControl>
-        <FormControl className={classes.formField}>
-          <TextField required id="lname" name="lastName" label={t('Join-Page-Textfield-LastName')} value={data.lastName} onChange={onChange} />
-        </FormControl>
-        <FormControl className={classes.formField}>
-          <Select required id="pref" name="pref" label="Preference" value={data.pref} onChange={onChange}>
+          <Select required id="pref" name="pref" label="Preference" value="helptext" onChange={onChange}>
             <MenuItem disabled value="helptext">{t('Join-Page-Preference-Dropdown-Helptext')}</MenuItem>
             <MenuItem value="phone">{ t('Join-Page-Preference-Dropdown-Phone') }</MenuItem>
             <MenuItem value="email">{ t('Join-Page-Preference-Dropdown-Email') }</MenuItem>
           </Select>
-        </FormControl>
-        { getContactField() }
-        <FormControl className={classes.formField}>
-          <TextField multiline id="info" name="info" label="Any additional information?" value={data.info} onChange={onChange} />
         </FormControl>
         <br />
         <Button className={classes.button} type="submit" value="Submit">
           { t('Join-Page-Submit-Button') }
         </Button>
       </form>
+      <Snackbar
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+        message={t('Join-Page-Submitted-Toast')}
+        action={(
+          <>
+            <IconButton size="small" aria-label="close" color="inherit" onClick={handleSnackbarClose}>
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </>
+        )}
+      />
     </div>
   );
 };
