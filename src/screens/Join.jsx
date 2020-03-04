@@ -17,11 +17,23 @@ const useStyles = makeStyles({
     boxSizing: 'border-box',
     resize: 'vertical',
   },
+  formFieldUnvalidated: {
+    width: '80%',
+    padding: '12px',
+    border: '1px solid #ccc',
+    borderRadius: '4px',
+    boxSizing: 'border-box',
+    borderColor: '#f00',
+    resize: 'vertical',
+  },
   button: {
     backgroundColor: '#595',
     color: '#fff',
     margin: '10px',
     padding: '5px',
+  },
+  snackbar: {
+    color: '#d00',
   },
 });
 
@@ -111,13 +123,18 @@ const JoinScreen = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const isFormComplete = fields.every((field) => {
+    const adjustedFields = fields.map((field) => {
       const value = field.value.replace(/\s/g, '');
-      return field.required ? value.length > 0 : true;
+      const oldField = { ...field };
+      oldField.validated = field.required ? value.length > 0 : true;
+      return oldField;
     });
+    const isFormComplete = adjustedFields.every((field) => field.validated);
     if (isFormComplete) {
       setOpen(true);
       setFields(fieldDefault);
+    } else {
+      setFields(adjustedFields);
     }
   };
 
@@ -131,10 +148,24 @@ const JoinScreen = () => {
       <h1>{ t('Join-Page-Header') }</h1>
       <h4>{ t('Join-Page-Body') }</h4>
       <form className="select" onSubmit={handleSubmit} noValidate autoComplete="off">
+        {fields.find((field) => field.name === 'contact').visible ? (
+          <div />
+        ) : (
+          <FormControl className={classes.formFieldUnvalidated}>
+            <Select required id="pref" name="pref" label="Preference" value="helptext" onChange={onChange}>
+              <MenuItem disabled value="helptext">{t('Join-Page-Preference-Dropdown-Helptext')}</MenuItem>
+              <MenuItem value="phone">{ t('Join-Page-Preference-Dropdown-Phone') }</MenuItem>
+              <MenuItem value="email">{ t('Join-Page-Preference-Dropdown-Email') }</MenuItem>
+            </Select>
+          </FormControl>
+        )}
         {fields.map((field) => {
           if (field.visible) {
             return (
-              <FormControl key={field.id} className={classes.formField}>
+              <FormControl
+                key={field.id}
+                className={field.validated ? classes.formField : classes.formFieldUnvalidated}
+              >
                 <TextField
                   required={field.required}
                   id={field.id}
@@ -147,13 +178,6 @@ const JoinScreen = () => {
             );
           }
         })}
-        <FormControl className={classes.formField}>
-          <Select required id="pref" name="pref" label="Preference" value="helptext" onChange={onChange}>
-            <MenuItem disabled value="helptext">{t('Join-Page-Preference-Dropdown-Helptext')}</MenuItem>
-            <MenuItem value="phone">{ t('Join-Page-Preference-Dropdown-Phone') }</MenuItem>
-            <MenuItem value="email">{ t('Join-Page-Preference-Dropdown-Email') }</MenuItem>
-          </Select>
-        </FormControl>
         <br />
         <Button className={classes.button} type="submit" value="Submit">
           { t('Join-Page-Submit-Button') }
@@ -162,12 +186,13 @@ const JoinScreen = () => {
       <Snackbar
         anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
         open={open}
-        autoHideDuration={6000}
+        // autoHideDuration={6000}
         onClose={handleSnackbarClose}
+        className={classes.snackbar}
         message={t('Join-Page-Submitted-Toast')}
         action={(
           <>
-            <IconButton size="small" aria-label="close" color="inherit" onClick={handleSnackbarClose}>
+            <IconButton size="large" aria-label="close" color="inherit" onClick={handleSnackbarClose}>
               <CloseIcon fontSize="small" />
             </IconButton>
           </>
