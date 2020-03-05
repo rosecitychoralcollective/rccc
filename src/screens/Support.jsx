@@ -7,7 +7,7 @@ const Support = () => {
   useTitle(t('Support-Page-Title'));
 
   return (
-    <div style={{ padding: 25 }}>
+    <div style={{ padding: 75, maxWidth: 700 }}>
       <h1>Dues</h1>
       <p>Yo hook us up wit dat money fam.</p>
       <h1>Donate to us</h1>

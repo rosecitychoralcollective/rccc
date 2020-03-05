@@ -1,5 +1,4 @@
 import React from 'react';
-import { Paper } from '@material-ui/core';
 import translateString from '../utils/StringHelper';
 import useTitle from '../hooks/useTitle';
 
@@ -8,12 +7,18 @@ const Contact = () => {
   useTitle(t('Contact-Page-Title'));
 
   return (
-    <div style={{ padding: 25 }}>
+    <div style={{ padding: 75, maxWidth: 700 }}>
       <h1>
         Contact us
       </h1>
       <h2>
-        Email: rosecitychoralcollective@gmail.com
+        Email:
+        {' '}
+        <a
+          href="mailto:rosecitychoralcollective@gmail.com"
+        >
+          rosecitychoralcollective@gmail.com
+        </a>
       </h2>
       <h2>
         Facebook:

@@ -14,7 +14,7 @@ const events = [
   {
     id: 2,
     title: 'End of summer Jamboree',
-    description: 'Come see Lyn show off her banjo skills!',
+    description: 'Come see Lyn show off her banjo skills! Come see all the banjoing you can get.',
     date: '8/1/21 4:30pm',
   },
 ];

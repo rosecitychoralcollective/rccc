@@ -29,8 +29,8 @@ const useStyles = makeStyles({
   button: {
     backgroundColor: '#595',
     color: '#fff',
-    margin: '10px',
-    padding: '5px',
+    margin: '15px',
+    padding: '10px',
   },
   snackbar: {
     color: '#d00',
@@ -144,7 +144,7 @@ const JoinScreen = () => {
   };
 
   return (
-    <div style={{ padding: 25 }}>
+    <div style={{ padding: 75, maxWidth: 700 }}>
       <h1>{ t('Join-Page-Header') }</h1>
       <h4>{ t('Join-Page-Body') }</h4>
       <form className="select" onSubmit={handleSubmit} noValidate autoComplete="off">

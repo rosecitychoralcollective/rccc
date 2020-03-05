@@ -10,7 +10,7 @@ const About = () => {
   useTitle(t('About-Page-Title'));
 
   return (
-    <div className="mainContent">
+    <div style={{ padding: 75, maxWidth: 700 }}>
       <h1>About Us</h1>
       <img src={group} width="400" height="200" alt="group singing" />
       <h2>A note from our director:</h2>

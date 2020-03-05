@@ -9,30 +9,41 @@ const EventCard = ({ image, handleClick, data }) => {
   const t = translateString;
 
   const useStyles = makeStyles({
-    root: {
+    card: {
       height: 300,
-      width: 325,
+      width: 300,
+      margin: 4,
+      padding: 10,
+      display: 'inline-block',
     },
   });
 
   const classes = useStyles();
 
+  const maxDescLength = 75;
+  const desc = data.description;
+  let text = desc;
+  if (desc.length > maxDescLength) {
+    const mod = desc[maxDescLength - 1] === ' ' ? 1 : 0;
+    text = `${desc.substring(0, maxDescLength - mod)}...`;
+  }
+
   return (
-    <Card style={{ display: 'inline-block', padding: 10 }} className={classes.root}>
+    <Card className={classes.card}>
       <CardActionArea>
         <CardMedia
           component="img"
           alt="your image didn't render, dummy"
-          height="140"
+          height="120"
           image={image}
           title="A Cat"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="h6">
             {data.title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="h6">
-            {data.description}
+            {text}
           </Typography>
           <Typography variant="h7" color="textSecondary" component="p">
             {data.date}

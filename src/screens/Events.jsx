@@ -16,11 +16,12 @@ const Events = () => {
     navigate(`/eventdetail/${e}`);
   };
 
+
   const pastEvents = events.slice(1);
 
   return (
-    <div>
-      <Paper style={{ padding: 25 }} />
+    <div style={{ padding: 75, maxWidth: 700 }}>
+      <Paper />
       <h1>{ t('EventList-Page-Upcoming-Header') }</h1>
       <EventCard image={cat} handleClick={handleClick} data={events[0]} />
       <br />
