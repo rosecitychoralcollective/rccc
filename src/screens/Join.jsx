@@ -147,6 +147,7 @@ const JoinScreen = () => {
     <div style={{ padding: 75, maxWidth: 700 }}>
       <h1>{ t('Join-Page-Header') }</h1>
       <h4>{ t('Join-Page-Body') }</h4>
+      <h5>{ t('Join-Page-Body-2') }</h5>
       <form className="select" onSubmit={handleSubmit} noValidate autoComplete="off">
         {fields.find((field) => field.name === 'contact').visible ? (
           <div />
