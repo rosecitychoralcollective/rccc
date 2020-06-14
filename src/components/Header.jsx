@@ -1,17 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   AppBar, IconButton, Tab, Tabs, MenuItem, Menu,
 } from '@material-ui/core';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { makeStyles } from '@material-ui/styles';
-import useStyle from '../hooks/useStyle';
 import useWindowSize from '../hooks/useWindowSize';
 import useTabs from '../hooks/useTabs';
+import availableStyles from '../resources/availableStyles';
 
-const Header = () => {
+const Header = ({ style, setStyle }) => {
   const [tabs, tabIndex, changeTabs] = useTabs();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [style, setStyle] = useStyle();
 
   const useStyles = makeStyles({
     ...style,
@@ -19,11 +19,7 @@ const Header = () => {
 
   const classes = useStyles();
 
-  const menuItems = [
-    'Style 1',
-    'Style 2',
-    'Style 3',
-  ];
+  const menuItems = availableStyles.map((_, i) => `Style ${i + 1}`);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -45,7 +41,7 @@ const Header = () => {
       {
         width >= 0
           ? (
-            <AppBar className={classes.root}>
+            <AppBar className={classes.header}>
               <Tabs
                 value={tabIndex}
                 onChange={changeTabs}
@@ -82,7 +78,7 @@ const Header = () => {
             </AppBar>
           )
           : (
-            <AppBar className={classes.root}>
+            <AppBar className={classes.header}>
               <IconButton aria-controls="simple-menu" aria-haspopup="true" edge="end" onClick={handleClick} color="inherit">
                 <MoreIcon />
               </IconButton>
@@ -93,6 +89,9 @@ const Header = () => {
   );
 };
 
-Header.propTypes = {};
+Header.propTypes = {
+  style: PropTypes.shape.isRequired,
+  setStyle: PropTypes.func.isRequired,
+};
 
 export default Header;

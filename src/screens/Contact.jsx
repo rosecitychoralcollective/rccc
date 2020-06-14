@@ -7,7 +7,7 @@ const Contact = () => {
   useTitle(t('Contact-Page-Title'));
 
   return (
-    <div style={{ padding: 75, maxWidth: 700 }}>
+    <div>
       <h1>
         Contact us
       </h1>

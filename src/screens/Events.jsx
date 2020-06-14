@@ -1,8 +1,6 @@
 import React from 'react';
 import { Paper } from '@material-ui/core';
 import { navigate } from 'hookrouter';
-import cat from '../resources/assets/cat.jpg';
-import cat2 from '../resources/assets/cat2.jpg';
 import translateString from '../utils/StringHelper';
 import useTitle from '../hooks/useTitle';
 import EventCard from '../components/EventCard';
@@ -16,22 +14,20 @@ const Events = () => {
     navigate(`/eventdetail/${e}`);
   };
 
-
   const pastEvents = events.slice(1);
 
   return (
-    <div style={{ padding: 75, maxWidth: 700 }}>
+    <div>
       <Paper />
       <h1>{ t('EventList-Page-Upcoming-Header') }</h1>
-      <EventCard image={cat} handleClick={handleClick} data={events[0]} />
+      <EventCard event={events[0]} handleClick={handleClick} />
       <br />
       <h1>{ t('EventList-Page-Previous-Header') }</h1>
       {pastEvents.map((e) => (
         <EventCard
-          key={e.title}
-          image={cat2}
+          event={e}
           handleClick={handleClick}
-          data={e}
+          component="img"
         />
       ))}
     </div>

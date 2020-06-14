@@ -9,13 +9,13 @@ import Support from '../screens/Support';
 import Contact from '../screens/Contact';
 
 const routes = {
-  '/': () => <HomeScreen />,
-  '/join': () => <JoinScreen />,
-  '/about': () => <About />,
-  '/events': () => <Events />,
-  '/eventdetail/:id': ({ id }) => <EventDetail id={id} />,
-  '/support': () => <Support />,
-  '/contact': () => <Contact />,
+  '/': () => (classes) => <HomeScreen classes={classes} />,
+  '/join': () => (classes) => <JoinScreen classes={classes} />,
+  '/about': () => (classes) => <About classes={classes} />,
+  '/events': () => (classes) => <Events classes={classes} />,
+  '/eventdetail/:id': ({ id }) => (classes) => <EventDetail id={id} classes={classes} />,
+  '/support': () => (classes) => <Support classes={classes} />,
+  '/contact': () => (classes) => <Contact classes={classes} />,
 };
 
 export default routes;

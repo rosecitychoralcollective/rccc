@@ -144,7 +144,7 @@ const JoinScreen = () => {
   };
 
   return (
-    <div style={{ padding: 75, maxWidth: 700 }}>
+    <div>
       <h1>{ t('Join-Page-Header') }</h1>
       <h4>{ t('Join-Page-Body') }</h4>
       <h5>{ t('Join-Page-Body-2') }</h5>
@@ -178,6 +178,7 @@ const JoinScreen = () => {
               </FormControl>
             );
           }
+          return null;
         })}
         <br />
         <Button className={classes.button} type="submit" value="Submit">

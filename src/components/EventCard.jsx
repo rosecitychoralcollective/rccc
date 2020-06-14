@@ -1,11 +1,13 @@
+/* eslint-disable global-require */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import {
-  Button, Card, CardActionArea, CardMedia, CardContent, Typography, CardActions
+  Button, Card, CardActionArea, CardMedia, CardContent, Typography, CardActions,
 } from '@material-ui/core';
 import translateString from '../utils/StringHelper';
 
-const EventCard = ({ image, handleClick, data }) => {
+const EventCard = ({ event, handleClick }) => {
   const t = translateString;
 
   const useStyles = makeStyles({
@@ -21,7 +23,7 @@ const EventCard = ({ image, handleClick, data }) => {
   const classes = useStyles();
 
   const maxDescLength = 75;
-  const desc = data.description;
+  const desc = event.description;
   let text = desc;
   if (desc.length > maxDescLength) {
     const mod = desc[maxDescLength - 1] === ' ' ? 1 : 0;
@@ -33,25 +35,25 @@ const EventCard = ({ image, handleClick, data }) => {
       <CardActionArea>
         <CardMedia
           component="img"
-          alt="your image didn't render, dummy"
+          alt={t('Event-Card-Image-Error')}
           height="120"
-          image={image}
+          src={event.image}
           title="A Cat"
         />
         <CardContent>
           <Typography gutterBottom variant="h6">
-            {data.title}
+            {event.title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="h6">
             {text}
           </Typography>
           <Typography variant="h7" color="textSecondary" component="p">
-            {data.date}
+            {event.date}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" onClick={() => handleClick(data.id)}>
+        <Button size="small" color="primary" onClick={() => handleClick(event.id)}>
           {t('EventList-Page-Link')}
         </Button>
       </CardActions>
@@ -60,3 +62,14 @@ const EventCard = ({ image, handleClick, data }) => {
 };
 
 export default EventCard;
+
+EventCard.propTypes = {
+  event: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    image: PropTypes.any,
+  }).isRequired,
+  handleClick: PropTypes.func.isRequired,
+};

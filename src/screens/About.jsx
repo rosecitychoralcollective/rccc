@@ -1,41 +1,65 @@
 import React from 'react';
-import { Avatar } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import { Avatar, Grid } from '@material-ui/core';
+import _ from 'lodash';
 import translateString from '../utils/StringHelper';
-import cat from '../resources/assets/cat.jpg';
-import group from '../resources/assets/fakesinging.jpg';
+import Resources from '../resources/resources';
 import useTitle from '../hooks/useTitle';
 
-const About = () => {
+const About = ({classes}) => {
   const t = translateString;
-  useTitle(t('About-Page-Title'));
+  useTitle(t('About-Screen-Title'));
+
+  const board = [
+    {
+      title: 'President',
+      resource: 'molly',
+      text: 'President-Description',
+    },
+    {
+      title: 'Officer',
+      resource: 'zosia',
+      text: 'Zosia',
+    },
+    {
+      title: 'Officer',
+      resource: 'annie',
+      text: 'Vice-President',
+    },
+  ];
 
   return (
-    <div style={{ padding: 75, maxWidth: 700 }}>
-      <h1>About Us</h1>
-      <img src={group} width="400" height="200" alt="group singing" />
-      <h2>A note from our director:</h2>
+    <div>
+      <h1 className={classes.preClick}>About Us</h1>
+      <img src={Resources.performance} width="700" height="550" alt="group singing" />
+      <h2 className={classes.postClick}>A note from our director:</h2>
+      {_.range(1, 7).map((num) => (
+        <p>
+          {t(`About-Screen-Text${num}`)}
+        </p>
+      ))}
       <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec volutpat mollis orci, eu interdum ipsum sollicitudin et. Vivamus a rhoncus nunc, sed aliquet libero. Nam sed maximus mauris, et tincidunt purus. Nulla ac tincidunt felis. Aenean eu molestie metus. Suspendisse convallis tellus magna, nec consequat orci laoreet ac. Pellentesque hendrerit, velit quis dictum pellentesque, nunc purus sollicitudin ligula, in placerat nisi diam sed dui.
-      </p>
-      <p>
-          Vestibulum cursus libero nec aliquet convallis. Ut erat arcu, hendrerit tincidunt tortor vitae, cursus elementum sem. Mauris vitae risus id enim viverra rutrum. Sed cursus, nibh ac pellentesque consectetur, ligula ex blandit justo, et vulputate ante mauris at nulla. Sed fringilla ullamcorper orci ac dictum. Maecenas ut orci id sapien placerat iaculis. Duis tempus sem a bibendum lobortis. Maecenas eget porttitor quam. Duis efficitur lorem mauris, volutpat viverra eros tempus ut. Vestibulum in feugiat augue. Aliquam convallis, risus eget sagittis ullamcorper, ex magna consectetur tortor, quis ultrices orci felis non ipsum. Duis tristique facilisis commodo. Vestibulum luctus maximus venenatis. Proin magna dolor, congue et condimentum vitae, pretium vitae orci. Aliquam vel venenatis neque.
-      </p>
-      <p>
-          Phasellus faucibus mi leo, in tristique neque pharetra in. Nam posuere tellus vel justo pellentesque, non pulvinar arcu rhoncus. Donec lorem magna, tincidunt id pellentesque vel, lobortis nec eros. Aliquam nisl risus, gravida eu ligula ac, vulputate molestie libero. Morbi vitae lorem a diam tincidunt porta vitae eget ligula. Sed et suscipit urna, vel mollis libero. Proin nisi ante, congue at auctor sed, vestibulum vitae est. Sed eu tincidunt lectus. Maecenas eget lacus vel ante ornare molestie. Nam fermentum, justo eget convallis faucibus, mi felis consectetur metus, eget interdum sem quam mollis ante. Donec iaculis, metus in accumsan aliquam, sapien justo tristique lectus, ut porta nisl justo et metus. Quisque pharetra erat in semper vulputate. Fusce nec erat volutpat, facilisis dolor vitae, commodo tortor. Nunc mattis euismod pretium. Nullam congue porta elit et tempus. Integer mi ligula, porttitor id consequat a, efficitur vitae nibh.
+        {t('About-Screen-Text7')}
+        <br />
+        {t('About-Screen-Text8')}
       </p>
       <h2>Our board of directors</h2>
       <div>
-        <Avatar alt={t('About-Screen-President')} src={cat}>B</Avatar>
-        Dread pirate molly
-      </div>
-      <div>
-        Some others i guess. who cares.
+        <Grid container spacing={3}>
+          {board.map((off) => (
+            <div className={classes.avatar}>
+              <Avatar alt={t(`About-Screen-${off.title}`)} src={Resources[off.resource]}>{off.resource.substring(0, 1).toUpperCase()}</Avatar>
+              {t(`About-Screen-${off.text}`)}
+            </div>
+          ))}
+        </Grid>
       </div>
     </div>
   );
 };
 
 About.propTypes = {
+  classes: PropTypes.shape.isRequired,
 };
 
 export default About;

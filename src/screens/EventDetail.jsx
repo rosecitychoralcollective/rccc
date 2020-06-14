@@ -8,7 +8,7 @@ const EventDetail = ({ id }) => {
   useTitle(event.title);
 
   return (
-    <div style={{ padding: 75, maxWidth: 700 }}>
+    <div>
       <img src={cat} alt={event.title} />
       <h1>{event.title}</h1>
       <p>{event.description}</p>
