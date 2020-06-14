@@ -25,6 +25,13 @@ const availableStyles = [
     .preClick('#f3cc41')
     .postClick('#87898c')
     .build(),
+  new StyleBuilder()
+    .header('c71585', '#f4f1ed')
+    .indicator('#414d5e')
+    .body('f4f1ed', '#414d5e')
+    .preClick('db7093')
+    .postClick('800080')
+    .build(),
 ];
 
 export default availableStyles;
