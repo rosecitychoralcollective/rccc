@@ -2,9 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import YouTube from 'react-youtube';
 import translateString from '../utils/StringHelper';
 import useTitle from '../hooks/useTitle';
-import howVid from '../resources/assets/howSong.mp4';
 
 const HomeScreen = ({classes}) => {
   const t = translateString;
@@ -20,9 +20,12 @@ const HomeScreen = ({classes}) => {
           {t(`Home-Page-Welcome${textId}`)}
         </p>
       ))}
-      <video style={{ width: '100%', height: '100%' }} src={howVid} controls>
+      <YouTube videoId="dQw4w9WgXcQ" />
+      {
+      // Disabled because the video is larger than size reqs.
+      /* <video style={{ width: '100%', height: '100%' }} src="https://www.youtube.com/watch?v=dQw4w9WgXcQ" controls>
         {t('Home-Page-Old-Browser')}
-      </video>
+      </video> */}
     </div>
   );
 };

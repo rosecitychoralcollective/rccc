@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import fetch from 'node-fetch';
 import PropTypes from 'prop-types';
 import {
   Button, FormControl, IconButton, MenuItem, Select, Snackbar, TextField,
@@ -7,6 +8,8 @@ import CloseIcon from '@material-ui/icons/Close';
 import { makeStyles } from '@material-ui/styles';
 import translateString from '../utils/StringHelper';
 import useTitle from '../hooks/useTitle';
+
+const live = false;
 
 const useStyles = makeStyles({
   formField: {
@@ -121,6 +124,48 @@ const JoinScreen = () => {
     }
   };
 
+  const sendEmail = async (templateParams, templateId) => {
+    const url = 'https://api.emailjs.com/api/v1.0/email/send';
+    const headers = { 'Content-Type': 'application/json' };
+    const body = JSON.stringify({
+      service_id: 'default_service',
+      template_id: templateId,
+      user_id: 'user_GWNAtDymSTgcWylixxY5G',
+      template_params: templateParams,
+    });
+    if (live) {
+      fetch(url, {
+        method: 'POST',
+        headers,
+        body,
+      }).then((res) => {
+        if (res.status > 299) {
+          console.error('Bad request sent to email service');
+        } else {
+          console.log('Sent email!');
+          console.log(res);
+        }
+      });
+    }
+  };
+
+  const sendThanksEmail = (params) => {
+    const templateParams = {
+      senderName: `${params.firstName} ${params.lastName}`,
+      fromEmail: `${params.contact}`,
+    };
+    return sendEmail(templateParams, 'thanks');
+  };
+
+  const sendContactEmail = (params) => {
+    const templateParams = {
+      senderName: `${params.firstName} ${params.lastName}`,
+      senderContact: params.contact,
+      additionalInfo: params.info,
+    };
+    return sendEmail(templateParams, 'template_1Zw2xRI9');
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const adjustedFields = fields.map((field) => {
@@ -132,13 +177,23 @@ const JoinScreen = () => {
     const isFormComplete = adjustedFields.every((field) => field.validated);
     if (isFormComplete) {
       setOpen(true);
+      const firstName = adjustedFields.find((f) => f.name === 'firstName').value;
+      const lastName = adjustedFields.find((f) => f.name === 'lastName').value;
+      const contact = adjustedFields.find((f) => f.name === 'contact');
+      const info = adjustedFields.find((f) => f.name === 'info').value;
+      sendContactEmail({
+        firstName, lastName, contact: contact.value, info,
+      });
+      if (contact.label.includes('Email')) {
+        sendThanksEmail({ firstName, lastName, contact: contact.value });
+      }
       setFields(fieldDefault);
     } else {
       setFields(adjustedFields);
     }
   };
 
-  const handleSnackbarClose = (event, reason) => {
+  const handleSnackbarClose = (_, reason) => {
     if (reason === 'clickaway') return;
     setOpen(false);
   };
