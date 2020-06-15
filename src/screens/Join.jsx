@@ -130,6 +130,7 @@ const JoinScreen = () => {
     const body = JSON.stringify({
       service_id: 'default_service',
       template_id: templateId,
+      // please don't steal this. we're a tiny organization :(
       user_id: 'user_GWNAtDymSTgcWylixxY5G',
       template_params: templateParams,
     });
