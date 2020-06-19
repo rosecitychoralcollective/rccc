@@ -55,7 +55,13 @@ const Header = ({ style, setStyle }) => {
                     <Tab key={tab.name} label={tab.name} />
                   ))
                 }
-                <IconButton aria-controls="simple-menu" aria-haspopup="true" edge="end" onClick={handleClick} color="inherit">
+                <IconButton
+                  aria-controls="simple-menu"
+                  aria-haspopup="true"
+                  edge="end"
+                  onClick={handleClick}
+                  color="inherit"
+                >
                   <MoreIcon />
                 </IconButton>
                 <Menu
