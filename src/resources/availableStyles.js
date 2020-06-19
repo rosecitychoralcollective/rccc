@@ -1,6 +1,6 @@
 import StyleBuilder from './StyleBuilder';
 
-const rcccRed = '#ed1c24';
+// const rcccRed = '#ed1c24';
 const otherRed = '#a80000';
 
 const availableStyles = [
