@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getEventById } from '../resources/events';
 import cat from '../resources/assets/cat.jpg';
 import useTitle from '../hooks/useTitle';
@@ -17,3 +18,7 @@ const EventDetail = ({ id }) => {
 };
 
 export default EventDetail;
+
+EventDetail.propTypes = {
+  id: PropTypes.number.isRequired,
+};
