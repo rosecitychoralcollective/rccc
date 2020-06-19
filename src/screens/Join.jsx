@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/styles';
 import translateString from '../utils/StringHelper';
 import useTitle from '../hooks/useTitle';
 
-const live = true;
+const live = false;
 
 const useStyles = makeStyles({
   formField: {
@@ -84,7 +84,7 @@ const JoinScreen = () => {
 
   const [fields, setFields] = useState(fieldDefault);
 
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const [isErr, setErr] = useState(false);
 
