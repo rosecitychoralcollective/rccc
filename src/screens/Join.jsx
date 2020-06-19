@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import fetch from 'node-fetch';
+import Alert from '@material-ui/lab/Alert';
 import PropTypes from 'prop-types';
 import {
-  Button, FormControl, IconButton, MenuItem, Select, Snackbar, TextField,
+  Button, FormControl, MenuItem, Select, Snackbar, TextField,
 } from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
 import { makeStyles } from '@material-ui/styles';
 import translateString from '../utils/StringHelper';
 import useTitle from '../hooks/useTitle';
 
-const live = false;
+const live = true;
 
 const useStyles = makeStyles({
   formField: {
@@ -34,9 +34,6 @@ const useStyles = makeStyles({
     color: '#fff',
     margin: '15px',
     padding: '10px',
-  },
-  snackbar: {
-    color: '#d00',
   },
 });
 
@@ -87,6 +84,10 @@ const JoinScreen = () => {
 
   const [fields, setFields] = useState(fieldDefault);
 
+  const [open, setOpen] = useState(true);
+
+  const [isErr, setErr] = useState(false);
+
   const getContactField = (value) => {
     const formFields = [...fields];
     const lastField = formFields.pop();
@@ -106,8 +107,6 @@ const JoinScreen = () => {
     setFields(formFields);
   };
 
-  const [open, setOpen] = useState(false);
-
   const onChange = (event) => {
     const { target } = event;
     const { value } = target;
@@ -125,7 +124,9 @@ const JoinScreen = () => {
   };
 
   const sendEmail = async (templateParams, templateId) => {
-    const url = 'https://api.emailjs.com/api/v1.0/email/send';
+    const url = live
+      ? 'https://api.emailjs.com/api/v1.0/email/send'
+      : 'https://localhost/';
     const headers = { 'Content-Type': 'application/json' };
     const body = JSON.stringify({
       service_id: 'default_service',
@@ -134,20 +135,14 @@ const JoinScreen = () => {
       user_id: 'user_GWNAtDymSTgcWylixxY5G',
       template_params: templateParams,
     });
-    if (live) {
-      fetch(url, {
-        method: 'POST',
-        headers,
-        body,
-      }).then((res) => {
-        if (res.status > 299) {
-          console.error('Bad request sent to email service');
-        } else {
-          console.log('Sent email!');
-          console.log(res);
-        }
-      });
-    }
+    return fetch(url, {
+      method: 'POST',
+      headers,
+      body,
+    }).then((res) => {
+      setErr(res.status > 299);
+      setOpen(true);
+    });
   };
 
   const sendThanksEmail = (params) => {
@@ -177,7 +172,6 @@ const JoinScreen = () => {
     });
     const isFormComplete = adjustedFields.every((field) => field.validated);
     if (isFormComplete) {
-      setOpen(true);
       const firstName = adjustedFields.find((f) => f.name === 'firstName').value;
       const lastName = adjustedFields.find((f) => f.name === 'lastName').value;
       const contact = adjustedFields.find((f) => f.name === 'contact');
@@ -244,18 +238,13 @@ const JoinScreen = () => {
       <Snackbar
         anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
         open={open}
-        // autoHideDuration={6000}
+        autoHideDuration={6000}
         onClose={handleSnackbarClose}
-        className={classes.snackbar}
-        message={t('Join-Page-Submitted-Toast')}
-        action={(
-          <>
-            <IconButton size="large" aria-label="close" color="inherit" onClick={handleSnackbarClose}>
-              <CloseIcon fontSize="small" />
-            </IconButton>
-          </>
-        )}
-      />
+      >
+        <Alert variant="filled" severity={isErr ? 'error' : 'success'}>
+          {t(`Join-Page-${isErr ? 'Error' : 'Submitted'}-Toast`)}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

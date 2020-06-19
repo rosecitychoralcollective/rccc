@@ -26,7 +26,7 @@ const Contact = () => {
         <a
           href="https://www.facebook.com/rosecitychoralcollective"
         >
-            @rosecitychoralcollective
+          @rosecitychoralcollective
         </a>
       </h2>
       <h2>

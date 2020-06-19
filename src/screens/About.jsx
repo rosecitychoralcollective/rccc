@@ -6,7 +6,7 @@ import translateString from '../utils/StringHelper';
 import Resources from '../resources/resources';
 import useTitle from '../hooks/useTitle';
 
-const About = ({classes}) => {
+const About = ({ classes }) => {
   const t = translateString;
   useTitle(t('About-Screen-Title'));
 

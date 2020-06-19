@@ -6,7 +6,7 @@ import YouTube from 'react-youtube';
 import translateString from '../utils/StringHelper';
 import useTitle from '../hooks/useTitle';
 
-const HomeScreen = ({classes}) => {
+const HomeScreen = ({ classes }) => {
   const t = translateString;
   useTitle(t('Home-Page-Title'));
 
