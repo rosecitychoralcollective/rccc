@@ -8,7 +8,7 @@ import { makeStyles } from '@material-ui/styles';
 import translateString from '../utils/StringHelper';
 import useTitle from '../hooks/useTitle';
 
-const live = false;
+const live = true;
 
 const useStyles = makeStyles({
   formField: {
@@ -166,6 +166,9 @@ const JoinScreen = () => {
         }).then((res) => {
           setErr(res.status > 299);
           setOpen(true);
+          if (!isErr) {
+            setFields(fieldDefault);
+          }
         });
       }
       if (contact.label.includes('Email')) {
@@ -173,7 +176,6 @@ const JoinScreen = () => {
           sendThanksEmail({ firstName, lastName, contact: contact.value });
         }
       }
-      setFields(fieldDefault);
     } else {
       setFields(adjustedFields);
     }
