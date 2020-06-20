@@ -3,20 +3,13 @@ import {
   AppBar, IconButton, Tab, Tabs, MenuItem, Menu,
 } from '@material-ui/core';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import { makeStyles } from '@material-ui/styles';
 import useWindowSize from '../hooks/useWindowSize';
 import useTabs from '../hooks/useTabs';
 import availableStyles from '../resources/availableStyles';
 
-const Header = ({ style, setStyle }) => {
+const Header = ({ classes, setStyle }) => {
   const [tabs, tabIndex, changeTabs] = useTabs();
   const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const useStyles = makeStyles({
-    ...style,
-  });
-
-  const classes = useStyles();
 
   const menuItems = availableStyles.map((_, i) => `Style ${i + 1}`);
 
@@ -40,7 +33,9 @@ const Header = ({ style, setStyle }) => {
       {
         width >= 0
           ? (
-            <AppBar className={classes.header}>
+            <AppBar
+              className={classes.header}
+            >
               <Tabs
                 value={tabIndex}
                 onChange={changeTabs}

@@ -14,7 +14,7 @@ const HomeScreen = ({ classes }) => {
         {t('Home-Page-Welcome-Header')}
       </h1>
       {_.range(1, 5).map((textId) => (
-        <p>
+        <p key={textId}>
           {t(`Home-Page-Welcome${textId}`)}
         </p>
       ))}

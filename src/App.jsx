@@ -18,7 +18,7 @@ export default function App() {
 
   return (
     <div className={classes.body}>
-      <Header style={style} setStyle={setStyle} />
+      <Header classes={classes} setStyle={setStyle} />
       { routeMatch(classes) }
     </div>
   );
