@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React from 'react';
-import PropTypes from 'prop-types';
 import _ from 'lodash';
 import YouTube from 'react-youtube';
 import translateString from '../utils/StringHelper';
@@ -28,10 +27,6 @@ const HomeScreen = ({ classes }) => {
       </video> */}
     </div>
   );
-};
-
-HomeScreen.propTypes = {
-  classes: PropTypes.shape.isRequired,
 };
 
 export default HomeScreen;

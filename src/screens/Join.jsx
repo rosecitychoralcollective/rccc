@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import fetch from 'node-fetch';
+import emailjs from 'emailjs-com';
 import Alert from '@material-ui/lab/Alert';
-import PropTypes from 'prop-types';
 import {
   Button, FormControl, MenuItem, Select, Snackbar, TextField,
 } from '@material-ui/core';
@@ -123,27 +122,12 @@ const JoinScreen = () => {
     }
   };
 
-  const sendEmail = async (templateParams, templateId) => {
-    const url = live
-      ? 'https://api.emailjs.com/api/v1.0/email/send'
-      : 'https://localhost/';
-    const headers = { 'Content-Type': 'application/json' };
-    const body = JSON.stringify({
-      service_id: 'default_service',
-      template_id: templateId,
-      // please don't steal this. we're a tiny organization :(
-      user_id: 'user_GWNAtDymSTgcWylixxY5G',
-      template_params: templateParams,
-    });
-    return fetch(url, {
-      method: 'POST',
-      headers,
-      body,
-    }).then((res) => {
-      setErr(res.status > 299);
-      setOpen(true);
-    });
-  };
+  const sendEmail = async (templateParams, templateId) => emailjs.send(
+    'default_service',
+    templateId,
+    templateParams,
+    'user_GWNAtDymSTgcWylixxY5G',
+  );
 
   const sendThanksEmail = (params) => {
     const templateParams = {
@@ -176,11 +160,18 @@ const JoinScreen = () => {
       const lastName = adjustedFields.find((f) => f.name === 'lastName').value;
       const contact = adjustedFields.find((f) => f.name === 'contact');
       const info = adjustedFields.find((f) => f.name === 'info').value;
-      sendContactEmail({
-        firstName, lastName, contact: contact.value, info,
-      });
+      if (live) {
+        sendContactEmail({
+          firstName, lastName, contact: contact.value, info,
+        }).then((res) => {
+          setErr(res.status > 299);
+          setOpen(true);
+        });
+      }
       if (contact.label.includes('Email')) {
-        sendThanksEmail({ firstName, lastName, contact: contact.value });
+        if (live) {
+          sendThanksEmail({ firstName, lastName, contact: contact.value });
+        }
       }
       setFields(fieldDefault);
     } else {
@@ -247,16 +238,6 @@ const JoinScreen = () => {
       </Snackbar>
     </div>
   );
-};
-
-JoinScreen.propTypes = {
-  style: PropTypes.shape({
-    primary: PropTypes.string,
-    secondary: PropTypes.string,
-    action1: PropTypes.string,
-    action2: PropTypes.string,
-    action3: PropTypes.string,
-  }).isRequired,
 };
 
 export default JoinScreen;

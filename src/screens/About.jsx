@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Avatar, Grid } from '@material-ui/core';
 import _ from 'lodash';
 import translateString from '../utils/StringHelper';
@@ -56,10 +55,6 @@ const About = ({ classes }) => {
       </div>
     </div>
   );
-};
-
-About.propTypes = {
-  classes: PropTypes.shape.isRequired,
 };
 
 export default About;

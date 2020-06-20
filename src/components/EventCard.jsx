@@ -1,6 +1,4 @@
-/* eslint-disable global-require */
 import React from 'react';
-import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import {
   Button, Card, CardActionArea, CardMedia, CardContent, Typography, CardActions,
@@ -62,14 +60,3 @@ const EventCard = ({ event, handleClick }) => {
 };
 
 export default EventCard;
-
-EventCard.propTypes = {
-  event: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-    image: PropTypes.any,
-  }).isRequired,
-  handleClick: PropTypes.func.isRequired,
-};

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   AppBar, IconButton, Tab, Tabs, MenuItem, Menu,
 } from '@material-ui/core';
@@ -93,11 +92,6 @@ const Header = ({ style, setStyle }) => {
       }
     </div>
   );
-};
-
-Header.propTypes = {
-  style: PropTypes.shape.isRequired,
-  setStyle: PropTypes.func.isRequired,
 };
 
 export default Header;
