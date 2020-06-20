@@ -33,7 +33,7 @@ const About = ({ classes }) => {
       <img src={Resources.performance} width="700" height="550" alt="group singing" />
       <h2 className={classes.postClick}>A note from our director:</h2>
       {_.range(1, 7).map((num) => (
-        <p>
+        <p key={num}>
           {t(`About-Screen-Text${num}`)}
         </p>
       ))}
@@ -45,8 +45,8 @@ const About = ({ classes }) => {
       <h2>Our board of directors</h2>
       <div>
         <Grid container spacing={3}>
-          {board.map((off) => (
-            <div className={classes.avatar}>
+          {board.map((off, i) => (
+            <div key={i} className={classes.avatar}>
               <Avatar alt={t(`About-Screen-${off.title}`)} src={Resources[off.resource]}>{off.resource.substring(0, 1).toUpperCase()}</Avatar>
               {t(`About-Screen-${off.text}`)}
             </div>

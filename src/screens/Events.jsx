@@ -26,15 +26,13 @@ const Events = () => {
       {pastEvents.map((e) => (
         <EventCard
           event={e}
+          key={e.id}
           handleClick={handleClick}
           component="img"
         />
       ))}
     </div>
   );
-};
-
-Events.propTypes = {
 };
 
 export default Events;

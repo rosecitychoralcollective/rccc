@@ -45,7 +45,7 @@ const EventCard = ({ event, handleClick }) => {
           <Typography variant="body2" color="textSecondary" component="h6">
             {text}
           </Typography>
-          <Typography variant="h7" color="textSecondary" component="p">
+          <Typography variant="subtitle2" color="textSecondary" component="p">
             {event.date}
           </Typography>
         </CardContent>
