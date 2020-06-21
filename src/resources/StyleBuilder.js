@@ -1,7 +1,11 @@
 /* eslint-disable no-underscore-dangle */
 export default class StyleBuilder {
   constructor() {
-    this.avatar = { padding: 10 };
+    this.avatar = {
+      padding: 10,
+      width: '80px',
+      height: '80px',
+    };
   }
 
   header(background, text) {
