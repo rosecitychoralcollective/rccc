@@ -21,7 +21,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "copyBuild": "cp -r ./build ../rosecitychoralcollective.github.io/",
+    "cleanDeploy": "rm -rf $RC3_DEPLOY/*",
+    "copyBuild": "cp -r ./build/* $RC3_DEPLOY",
     "build": "react-scripts build",
     "preDeploy": "yarn run build",
     "deploy": "gh-pages -b master -d build",
