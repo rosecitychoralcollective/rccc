@@ -16,7 +16,7 @@ const About = ({ classes }) => {
     {
       title: 'President',
       resource: 'molly',
-      text: 'President-Description',
+      text: 'Molly',
     },
     {
       title: 'Officer',
@@ -26,7 +26,12 @@ const About = ({ classes }) => {
     {
       title: 'Officer',
       resource: 'annie',
-      text: 'Vice-President',
+      text: 'Annie',
+    },
+    {
+      title: 'Artistic Director',
+      resource: 'lyn',
+      text: 'Lyn',
     },
   ];
 
@@ -62,7 +67,7 @@ const About = ({ classes }) => {
               }}
               >
                 <Avatar
-                  alt={t(`About-Screen-${off.title}`)}
+                  alt={curMember.text}
                   src={Resources[off.resource]}
                   style={{
                     width: '120px',
@@ -79,7 +84,7 @@ const About = ({ classes }) => {
           onClose={handleDialogClose}
           open={dialogOpen}
         >
-          <DialogTitle>{`${curMember.title} ${t(`About-Screen-${curMember.text}`)}`}</DialogTitle>
+          <DialogTitle>{`${curMember.title} ${curMember.text}`}</DialogTitle>
           <Avatar
             alt={t(`About-Screen-${curMember.title}`)}
             src={Resources[curMember.resource]}
