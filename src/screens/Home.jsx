@@ -19,7 +19,6 @@ const HomeScreen = ({ classes }) => {
         </p>
       ))}
       <YouTube videoId="dQw4w9WgXcQ" />
-      {
       <h2 className={classes.preClick}>
         Our Mission
       </h2>
