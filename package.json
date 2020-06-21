@@ -25,7 +25,7 @@
     "copyBuild": "cp -r ./build/* $RC3_DEPLOY",
     "build": "react-scripts build",
     "preDeploy": "yarn run build",
-    "deploy": "gh-pages -b master -d build",
+    "deploy": "yarn cleanDeploy && yarn copyBuild && cd $RC3_DEPLOY && git add . && git commit -m \"autoDeploy\" && git push",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .js --ext .jsx ."
