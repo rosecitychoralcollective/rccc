@@ -20,10 +20,14 @@ const HomeScreen = ({ classes }) => {
       ))}
       <YouTube videoId="dQw4w9WgXcQ" />
       {
-      // Disabled because the video is larger than size reqs.
-      /* <video style={{ width: '100%', height: '100%' }} src="https://www.youtube.com/watch?v=dQw4w9WgXcQ" controls>
-        {t('Home-Page-Old-Browser')}
-      </video> */}
+      <h2 className={classes.preClick}>
+        Our Mission
+      </h2>
+      <p>
+        At Rose City Choral Collective, we endeavor to create quality choral music in a welcoming
+        environment that promotes learning and growth. We aim to give a memorable performance
+        experience that brings joy to both singer and listener
+      </p>
     </div>
   );
 };
