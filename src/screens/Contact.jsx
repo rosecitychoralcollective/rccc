@@ -26,11 +26,11 @@ const Contact = () => {
         <a
           href="https://www.facebook.com/rosecitychoralcollective"
         >
-          @rosecitychoralcollective
+          rosecitychoralcollective
         </a>
       </h2>
       <h2>
-        Phone: 503-867-5309. Ask for Jenny.
+        Phone: 503-830-4940
       </h2>
     </div>
   );
