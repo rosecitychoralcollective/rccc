@@ -18,7 +18,10 @@ const HomeScreen = ({ classes }) => {
           {t(`Home-Page-Welcome${textId}`)}
         </p>
       ))}
-      <YouTube videoId="IfD8vVGFlAM" />
+      <YouTube
+        videoId="IfD8vVGFlAM"
+        containerClassName="youtubeContainer"
+      />
       <h2 className={classes.preClick}>
         Our Mission
       </h2>

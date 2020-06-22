@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import {
-  Button, Card, CardActionArea, CardMedia, CardContent, Typography, CardActions,
+  Card, CardActionArea, CardMedia, CardContent, Typography, CardActions,
 } from '@material-ui/core';
 import translateString from '../utils/StringHelper';
 
@@ -10,10 +10,12 @@ const EventCard = ({ event, handleClick }) => {
 
   const useStyles = makeStyles({
     card: {
-      height: 300,
-      width: 300,
-      margin: 4,
-      padding: 10,
+      height: 'auto',
+      maxHeight: 300,
+      width: 'auto',
+      maxWidth: 300,
+      margin: '1rem',
+      padding: '0.5rem',
       display: 'inline-block',
     },
   });
@@ -29,12 +31,12 @@ const EventCard = ({ event, handleClick }) => {
   }
 
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} onClick={() => handleClick(event.id)}>
       <CardActionArea>
         <CardMedia
           component="img"
           alt={t('Event-Card-Image-Error')}
-          height="120"
+          height="auto"
           src={event.image}
           title="A Cat"
         />
@@ -50,11 +52,6 @@ const EventCard = ({ event, handleClick }) => {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary" onClick={() => handleClick(event.id)}>
-          {t('EventList-Page-Link')}
-        </Button>
-      </CardActions>
     </Card>
   );
 };

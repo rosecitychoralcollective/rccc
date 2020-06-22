@@ -4,43 +4,15 @@ import Alert from '@material-ui/lab/Alert';
 import {
   Button, FormControl, MenuItem, Select, Snackbar, TextField,
 } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
 import translateString from '../utils/StringHelper';
 import useTitle from '../hooks/useTitle';
 
 const live = true;
 
-const useStyles = makeStyles({
-  formField: {
-    width: '80%',
-    padding: '12px',
-    border: '1px solid #ccc',
-    borderRadius: '4px',
-    boxSizing: 'border-box',
-    resize: 'vertical',
-  },
-  formFieldUnvalidated: {
-    width: '80%',
-    padding: '12px',
-    border: '1px solid #ccc',
-    borderRadius: '4px',
-    boxSizing: 'border-box',
-    borderColor: '#f00',
-    resize: 'vertical',
-  },
-  button: {
-    backgroundColor: '#595',
-    color: '#fff',
-    margin: '15px',
-    padding: '10px',
-  },
-});
-
-const JoinScreen = () => {
+const JoinScreen = (style) => {
   const t = translateString;
+  const { classes } = style;
   useTitle(t('Join-Page-Title'));
-
-  const classes = useStyles();
 
   const fieldDefault = [
     {

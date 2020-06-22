@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { useRoutes } from 'hookrouter';
 import { makeStyles } from '@material-ui/styles';
 

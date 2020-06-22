@@ -1,6 +1,5 @@
 import React from 'react';
 import { getEventById } from '../resources/events';
-import cat from '../resources/assets/cat.jpg';
 import useTitle from '../hooks/useTitle';
 
 const EventDetail = ({ id }) => {
@@ -9,8 +8,8 @@ const EventDetail = ({ id }) => {
 
   return (
     <div>
-      <img src={cat} alt={event.title} />
       <h1>{event.title}</h1>
+      <img src={event.image} alt={event.title} />
       <p>{event.description}</p>
     </div>
   );

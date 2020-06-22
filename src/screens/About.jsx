@@ -6,34 +6,12 @@ import _ from 'lodash';
 import translateString from '../utils/StringHelper';
 import Resources from '../resources/resources';
 import useTitle from '../hooks/useTitle';
+import board from '../resources/officers';
 
 const About = ({ classes }) => {
   const t = translateString;
   const [dialogOpen, setDialogOpen] = useState(false);
   useTitle(t('About-Screen-Title'));
-
-  const board = [
-    {
-      title: 'President',
-      resource: 'molly',
-      text: 'Molly',
-    },
-    {
-      title: 'Officer',
-      resource: 'zosia',
-      text: 'Zosia',
-    },
-    {
-      title: 'Officer',
-      resource: 'annie',
-      text: 'Annie',
-    },
-    {
-      title: 'Artistic Director',
-      resource: 'lyn',
-      text: 'Lyn',
-    },
-  ];
 
   const [curMember, setCurMember] = useState(board[0]);
 
@@ -44,7 +22,7 @@ const About = ({ classes }) => {
   return (
     <div>
       <h1 className={classes.preClick}>About Us</h1>
-      <img src={Resources.performance} width="700" height="550" alt="group singing" />
+      <img src={Resources.performance} width="100%" height="auto" alt="group singing" />
       <h2 className={classes.postClick}>A note from our director:</h2>
       {_.range(1, 7).map((num) => (
         <p key={num}>
@@ -68,10 +46,12 @@ const About = ({ classes }) => {
               >
                 <Avatar
                   alt={curMember.text}
-                  src={Resources[off.resource]}
+                  src={Resources[off.thumb]}
                   style={{
-                    width: '120px',
-                    height: '120px',
+                    maxWidth: '100px',
+                    width: 'auto',
+                    maxHeight: '100px',
+                    height: 'auto',
                   }}
                 >
                   {off.resource.substring(0, 1).toUpperCase()}
@@ -89,15 +69,15 @@ const About = ({ classes }) => {
             alt={t(`About-Screen-${curMember.title}`)}
             src={Resources[curMember.resource]}
             style={{
-              width: '150px',
-              height: '150px',
-              padding: 20,
+              width: 'auto',
+              height: 'auto',
+              padding: '5rem',
             }}
           >
             {curMember.resource.substring(0, 1).toUpperCase()}
           </Avatar>
-          <div style={{maxWidth: 400, padding: 16}}>
-            Thousands of years ago before the dawn of man as we knew him, there was Sir Santa of Claus, an ape-like creature making crude and pointless toys out of dinobones and his own waste, hurling them at chimp-like creatures with crinkled hands regardless of how they behaved the previous year. These so-called &quot;toys&quot; were buried as witches, and defecated upon, and hurled at predators when wakened by the searing grunts of children. It wasn&apos;t a holly jolly Christmas that year. For many were killed.
+          <div style={{maxWidth: 'auto', padding: '5rem'}}>
+            {curMember.bio}
           </div>
         </Dialog>
       </div>

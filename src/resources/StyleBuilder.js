@@ -2,9 +2,32 @@
 export default class StyleBuilder {
   constructor() {
     this.avatar = {
-      padding: 10,
-      width: '80px',
-      height: '80px',
+      padding: '2rem',
+      width: '10rem',
+      height: '10rem',
+    };
+    this.formField = {
+      width: '80%',
+      padding: '12px',
+      border: '1px solid #ccc',
+      borderRadius: '4px',
+      boxSizing: 'border-box',
+      resize: 'vertical',
+    };
+    this.formFieldUnvalidated = {
+      width: '80%',
+      padding: '12px',
+      border: '1px solid #ccc',
+      borderRadius: '4px',
+      boxSizing: 'border-box',
+      borderColor: '#f00',
+      resize: 'vertical',
+    };
+    this.button = {
+      backgroundColor: '#595',
+      color: '#fff',
+      margin: '15px',
+      padding: '10px',
     };
   }
 
@@ -27,9 +50,9 @@ export default class StyleBuilder {
     this._body = {
       backgroundColor: background,
       color: text,
-      padding: 75,
-      paddingLeft: '10rem',
-      maxWidth: 700,
+      padding: '3rem',
+      paddingLeft: '2rem',
+      maxWidth: '50rem',
     };
     return this;
   }
@@ -52,6 +75,9 @@ export default class StyleBuilder {
       preClick: this._preClick,
       postClick: this._postClick,
       avatar: this._avatar,
+      formField: this.formField,
+      formFieldUnvalidated: this.formFieldUnvalidated,
+      button: this.button,
     };
   }
 }
