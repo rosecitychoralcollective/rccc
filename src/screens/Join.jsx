@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
 import Alert from '@material-ui/lab/Alert';
 import {
-  Button, FormControl, MenuItem, Select, Snackbar, TextField,
+  Button, FormControl, FormHelperText, MenuItem, Select, Snackbar, TextField,
 } from '@material-ui/core';
 import translateString from '../utils/StringHelper';
 import useTitle from '../hooks/useTitle';
@@ -164,17 +164,6 @@ const JoinScreen = (style) => {
       <h4 className={classes.secondary}>{ t('Join-Page-Body') }</h4>
       <h5 className={classes.secondary}>{ t('Join-Page-Body-2') }</h5>
       <form className="select" onSubmit={handleSubmit} noValidate autoComplete="off">
-        {fields.find((field) => field.name === 'contact').visible ? (
-          <div />
-        ) : (
-          <FormControl className={classes.formFieldUnvalidated}>
-            <Select required id="pref" name="pref" label="Preference" value="helptext" onChange={onChange}>
-              <MenuItem disabled value="helptext">{t('Join-Page-Preference-Dropdown-Helptext')}</MenuItem>
-              <MenuItem value="phone">{ t('Join-Page-Preference-Dropdown-Phone') }</MenuItem>
-              <MenuItem value="email">{ t('Join-Page-Preference-Dropdown-Email') }</MenuItem>
-            </Select>
-          </FormControl>
-        )}
         {fields.map((field) => {
           if (field.visible) {
             return (
@@ -195,6 +184,17 @@ const JoinScreen = (style) => {
           }
           return null;
         })}
+        {fields.find((field) => field.name === 'contact').visible
+          || (
+          <FormControl required className={classes.field}>
+            <Select id="pref" name="pref" label="Preference" value="helptext" onChange={onChange}>
+              <MenuItem disabled value="helptext">{t('Join-Page-Preference-Dropdown-Helptext')}</MenuItem>
+              <MenuItem value="phone">{ t('Join-Page-Preference-Dropdown-Phone') }</MenuItem>
+              <MenuItem value="email">{ t('Join-Page-Preference-Dropdown-Email') }</MenuItem>
+            </Select>
+            <FormHelperText>Required</FormHelperText>
+          </FormControl>
+          )}
         <br />
         <Button className={classes.button} type="submit" value="Submit">
           { t('Join-Page-Submit-Button') }
