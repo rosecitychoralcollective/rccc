@@ -2,20 +2,20 @@ import React from 'react';
 import useTitle from '../hooks/useTitle';
 import translateString from '../utils/StringHelper';
 
-const Support = () => {
+const Support = ({ classes }) => {
   const t = translateString;
   useTitle(t('Support-Page-Title'));
 
   return (
     <div>
-      <h1>Dues</h1>
+      <h1 className={classes.primary}>Dues</h1>
       <p>Yo hook us up wit dat money fam.</p>
-      <h1>Donate to us</h1>
+      <h2 className={classes.secondary}>Donate to us</h2>
       <p>Same as above but you haven&apos;t purchased singing rights.</p>
-      <h2>
+      <h4 className={classes.secondary}>
         to speak to someone about donating time or items, please contact us
         (with link to contact page)
-      </h2>
+      </h4>
     </div>
   );
 };

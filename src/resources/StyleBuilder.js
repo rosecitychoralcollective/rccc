@@ -1,4 +1,13 @@
 /* eslint-disable no-underscore-dangle */
+const fieldDefault = {
+  width: '80%',
+  padding: '12px',
+  border: '1px solid',
+  borderRadius: '4px',
+  boxSizing: 'border-box',
+  resize: 'vertical',
+};
+
 export default class StyleBuilder {
   constructor() {
     this.avatar = {
@@ -31,6 +40,22 @@ export default class StyleBuilder {
     };
   }
 
+  field(color) {
+    this._formField = {
+      ...fieldDefault,
+      borderColor: color,
+    };
+    return this;
+  }
+
+  invalidField(color) {
+    this._invalidField = {
+      ...fieldDefault,
+      borderColor: color,
+    };
+    return this;
+  }
+
   header(background, text) {
     this._header = {
       background,
@@ -57,13 +82,18 @@ export default class StyleBuilder {
     return this;
   }
 
-  preClick(color) {
-    this._preClick = { color };
+  primaryHeading(color) {
+    this._primaryHeading = { color };
     return this;
   }
 
-  postClick(color) {
-    this._postClick = { color };
+  secondaryHeading(color) {
+    this._secondaryHeading = { color };
+    return this;
+  }
+
+  link(color) {
+    this._link = { color };
     return this;
   }
 
@@ -72,12 +102,15 @@ export default class StyleBuilder {
       header: this._header,
       indicator: this._indicator,
       body: this._body,
-      preClick: this._preClick,
-      postClick: this._postClick,
+      link: this._link,
+      primary: this._primaryHeading,
+      secondary: this._secondaryHeading,
       avatar: this._avatar,
       formField: this.formField,
       formFieldUnvalidated: this.formFieldUnvalidated,
       button: this.button,
+      field: this._formField,
+      invalidField: this._invalidField,
     };
   }
 }

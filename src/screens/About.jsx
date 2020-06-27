@@ -21,9 +21,9 @@ const About = ({ classes }) => {
 
   return (
     <div>
-      <h1 className={classes.preClick}>About Us</h1>
+      <h1 className={classes.primary}>About Us</h1>
       <img src={Resources.performance} width="100%" height="auto" alt="group singing" />
-      <h2 className={classes.postClick}>A note from our director:</h2>
+      <h2 className={classes.secondary}>A note from our director:</h2>
       {_.range(1, 7).map((num) => (
         <p key={num}>
           {t(`About-Screen-Text${num}`)}
@@ -34,7 +34,7 @@ const About = ({ classes }) => {
         <br />
         {t('About-Screen-Text8')}
       </p>
-      <h2>Our board of directors</h2>
+      <h2 className={classes.secondary}>Our board of directors</h2>
       <div>
         <Grid container spacing={3}>
           {board.map((off, i) => (

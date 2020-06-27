@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRoutes } from 'hookrouter';
 import { makeStyles } from '@material-ui/styles';
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import availableStyles from '../resources/availableStyles';
 
 const useStyle = () => {
@@ -7,6 +7,10 @@ const useStyle = () => {
   const changeStyle = (index) => {
     setStyle(availableStyles[index]);
   };
+
+  useEffect(() => {
+    document.body.style.backgroundColor = style.body.backgroundColor;
+  });
 
   return [style, changeStyle];
 };

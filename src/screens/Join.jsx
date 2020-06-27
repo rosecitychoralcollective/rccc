@@ -160,9 +160,9 @@ const JoinScreen = (style) => {
 
   return (
     <div>
-      <h1>{ t('Join-Page-Header') }</h1>
-      <h4>{ t('Join-Page-Body') }</h4>
-      <h5>{ t('Join-Page-Body-2') }</h5>
+      <h1 className={classes.primary}>{ t('Join-Page-Header') }</h1>
+      <h4 className={classes.secondary}>{ t('Join-Page-Body') }</h4>
+      <h5 className={classes.secondary}>{ t('Join-Page-Body-2') }</h5>
       <form className="select" onSubmit={handleSubmit} noValidate autoComplete="off">
         {fields.find((field) => field.name === 'contact').visible ? (
           <div />
@@ -180,7 +180,7 @@ const JoinScreen = (style) => {
             return (
               <FormControl
                 key={field.id}
-                className={field.validated ? classes.formField : classes.formFieldUnvalidated}
+                className={field.validated ? classes.field : classes.invalidField}
               >
                 <TextField
                   required={field.required}

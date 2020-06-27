@@ -10,7 +10,7 @@ const HomeScreen = ({ classes }) => {
 
   return (
     <div>
-      <h1 className={classes.preClick}>
+      <h1 className={classes.primary}>
         {t('Home-Page-Welcome-Header')}
       </h1>
       {_.range(1, 5).map((textId) => (
@@ -22,7 +22,7 @@ const HomeScreen = ({ classes }) => {
         videoId="IfD8vVGFlAM"
         containerClassName="youtubeContainer"
       />
-      <h2 className={classes.preClick}>
+      <h2 className={classes.secondary}>
         Our Mission
       </h2>
       <p>

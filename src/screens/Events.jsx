@@ -6,7 +6,7 @@ import useTitle from '../hooks/useTitle';
 import EventCard from '../components/EventCard';
 import events from '../resources/events';
 
-const Events = () => {
+const Events = ({ classes }) => {
   const t = translateString;
   useTitle(t('EventList-Page-Title'));
 
@@ -19,10 +19,10 @@ const Events = () => {
   return (
     <div>
       <Paper />
-      <h1>{ t('EventList-Page-Upcoming-Header') }</h1>
+      <h1 className={classes.primary}>{ t('EventList-Page-Upcoming-Header') }</h1>
       <EventCard event={events[0]} handleClick={handleClick} />
       <br />
-      <h1>{ t('EventList-Page-Previous-Header') }</h1>
+      <h2 className={classes.secondary}>{ t('EventList-Page-Previous-Header') }</h2>
       {pastEvents.map((e) => (
         <EventCard
           event={e}
