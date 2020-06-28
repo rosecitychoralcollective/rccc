@@ -10,16 +10,16 @@ const useTabs = () => {
       route: '/',
     },
     {
+      name: 'about',
+      route: '/about',
+    },
+    {
       name: 'join',
       route: '/join',
     },
     {
       name: 'events',
       route: '/events',
-    },
-    {
-      name: 'about',
-      route: '/about',
     },
     {
       name: 'support',
