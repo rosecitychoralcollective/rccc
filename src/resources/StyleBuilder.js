@@ -15,23 +15,6 @@ export default class StyleBuilder {
       width: '10rem',
       height: '10rem',
     };
-    this.formField = {
-      width: '80%',
-      padding: '12px',
-      border: '1px solid #ccc',
-      borderRadius: '4px',
-      boxSizing: 'border-box',
-      resize: 'vertical',
-    };
-    this.formFieldUnvalidated = {
-      width: '80%',
-      padding: '12px',
-      border: '1px solid #ccc',
-      borderRadius: '4px',
-      boxSizing: 'border-box',
-      borderColor: '#f00',
-      resize: 'vertical',
-    };
     this.button = {
       backgroundColor: '#595',
       color: '#fff',
@@ -40,6 +23,12 @@ export default class StyleBuilder {
     };
     this._phonePopover = {
       padding: '1rem',
+    };
+    this._tabs = {
+      flexGrow: 1,
+    };
+    this._contactButtons = {
+      flexDirection: 'row-reverse',
     };
   }
 
@@ -78,9 +67,12 @@ export default class StyleBuilder {
     this._body = {
       backgroundColor: background,
       color: text,
-      padding: '3rem',
+      marginTop: '5rem',
+      marginLeft: 'auto',
+      marginRight: 'auto',
       paddingLeft: '2rem',
-      maxWidth: '50rem',
+      paddingRight: '2rem',
+      maxWidth: '70rem',
     };
     this._phonePopover.backgroundColor = background;
     this._phonePopover.color = text;
@@ -117,6 +109,8 @@ export default class StyleBuilder {
       field: this._formField,
       invalidField: this._invalidField,
       phonePopover: this._phonePopover,
+      contactButtons: this._contactButtons,
+      tabs: this._tabs,
     };
   }
 }
