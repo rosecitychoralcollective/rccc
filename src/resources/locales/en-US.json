@@ -18,7 +18,6 @@
   "Contact-Page-Facebook": "Facebook: ",
   "Contact-Page-Facebook-Page": "rosecitychoralcollective",
   "Contact-Page-Phone": "Phone: ",
-  "Contact-Page-Phone-Number": "503-830-4940",
   "Contact-Page-Title": "Contact us",
   "Event-Card-Image-Error": "Image asset not found for this card. Sorry :(",
   "Event-Detail-Header": "This is the coolest event",
@@ -27,6 +26,7 @@
   "EventList-Page-Title": "Events",
   "EventList-Page-Upcoming-Header": "Upcoming Events!",
   "EventList-Page-Previous-Header": "Previous Events...",
+  "Facebook-Link": "https://www.facebook.com/rosecitychoralcollective",
   "Home-Page-Welcome-Header": "Welcome to the Rose City Choral Collective website! ",
   "Home-Page-Old-Browser": "Sorry, your browser does not support embedded video",
   "Home-Page-Welcome1": "We are an independent group of singers who gather together in the spirit of community and a love of music. We sing. We laugh. We sing some more. Occasionally, we perform a concert.",
@@ -49,6 +49,7 @@
   "Join-Page-Textfield-LastName": "Last Name",
   "Join-Page-Textfield-Phone": "Phone Number",
   "Join-Page-Title": "Join us!",
+  "Phone-Number": "503-830-4940",
   "Organization-Name": "Rose City Choral Collective",
   "Support-Page-Title": "Support us"
 }

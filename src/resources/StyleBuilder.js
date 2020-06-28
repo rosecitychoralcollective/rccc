@@ -38,6 +38,9 @@ export default class StyleBuilder {
       margin: '15px',
       padding: '10px',
     };
+    this._phonePopover = {
+      padding: '1rem',
+    };
   }
 
   field(color) {
@@ -79,6 +82,8 @@ export default class StyleBuilder {
       paddingLeft: '2rem',
       maxWidth: '50rem',
     };
+    this._phonePopover.backgroundColor = background;
+    this._phonePopover.color = text;
     return this;
   }
 
@@ -111,6 +116,7 @@ export default class StyleBuilder {
       button: this.button,
       field: this._formField,
       invalidField: this._invalidField,
+      phonePopover: this._phonePopover,
     };
   }
 }

@@ -25,10 +25,6 @@ const useTabs = () => {
       name: 'support',
       route: '/support',
     },
-    {
-      name: 'contact',
-      route: '/contact',
-    },
   ];
 
   const changeTabs = (_, index) => {

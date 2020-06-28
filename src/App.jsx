@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useRoutes } from 'hookrouter';
 import { makeStyles } from '@material-ui/styles';
 
 import useStyle from './hooks/useStyle';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import routes from './resources/routes';
 
 export default function App() {
