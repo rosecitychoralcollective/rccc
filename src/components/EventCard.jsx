@@ -31,7 +31,7 @@ const EventCard = ({ event, handleClick }) => {
   }
 
   return (
-    <Card className={classes.card} onClick={() => handleClick(event.id)}>
+    <Card id="card" className={classes.card} onClick={() => handleClick(event.id)}>
       <CardActionArea>
         <CardMedia
           component="img"
