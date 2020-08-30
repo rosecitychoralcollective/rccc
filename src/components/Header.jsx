@@ -20,7 +20,7 @@ const Header = ({ classes, setStyle }) => {
   };
 
   const handleEmailClick = () => {
-    window.open('mailto:rosecitychoralcollective@gmail.com');
+    window.open(`mailto:${t('Contact-Page-Email-Address')}`);
   };
 
   const handlePhoneClick = (event) => {
