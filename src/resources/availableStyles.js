@@ -5,7 +5,7 @@ const otherRed = '#ed1c24';
 const availableStyles = [
   new StyleBuilder()
     .header(otherRed, '#fff5c9')
-    .indicator('#414d5e')
+    .indicator('primary')
     .body('#fff5c9', '#194e83')
     .primaryHeading('#194e83')
     .secondaryHeading('#007dc5')
@@ -15,7 +15,7 @@ const availableStyles = [
     .build(),
   new StyleBuilder()
     .header(otherRed, '#f7f5ed')
-    .indicator('#6d6e71')
+    .indicator('primary')
     .body('#f7f5ed', '#009344')
     .primaryHeading('#009344')
     .secondaryHeading('#8cc63e')
@@ -25,7 +25,7 @@ const availableStyles = [
     .build(),
   new StyleBuilder()
     .header(otherRed, '#eff0f1')
-    .indicator('#444446')
+    .indicator('primary')
     .body('#eff0f1', '#020202')
     .primaryHeading('#020202')
     .secondaryHeading('#919693')
@@ -35,7 +35,7 @@ const availableStyles = [
     .build(),
   new StyleBuilder()
     .header(otherRed, '#000000')
-    .indicator('#414d5e')
+    .indicator('primary')
     .body('fcfbe3', '#2e3192')
     .primaryHeading('#2e3192')
     .secondaryHeading('#00bff3')
@@ -45,7 +45,7 @@ const availableStyles = [
     .build(),
   new StyleBuilder()
     .header(otherRed, '#757575')
-    .indicator('#414d5e')
+    .indicator('primary')
     .body('#fcfbe3', '#757575')
     .primaryHeading('#757575')
     .secondaryHeading('#b71c1c')
@@ -55,7 +55,7 @@ const availableStyles = [
     .build(),
   new StyleBuilder()
     .header(otherRed, '#fcfbe3')
-    .indicator('#6d6e71')
+    .indicator('primary')
     .body('#fcfbe3', '#991b39')
     .primaryHeading('#991b39')
     .secondaryHeading('#f36c36')
@@ -65,7 +65,7 @@ const availableStyles = [
     .build(),
   new StyleBuilder()
     .header(otherRed, '#efe4b0')
-    .indicator('#444446')
+    .indicator('primary')
     .body('#efe4b0', '#3f48cc')
     .primaryHeading('#3f48cc')
     .secondaryHeading('#99d9ea')
@@ -75,7 +75,7 @@ const availableStyles = [
     .build(),
   new StyleBuilder()
     .header(otherRed, '#374f67')
-    .indicator('#414d5e')
+    .indicator('primary')
     .body('#fcfbe3', '#374f67')
     .primaryHeading('#374f67')
     .secondaryHeading('#7dccbf')

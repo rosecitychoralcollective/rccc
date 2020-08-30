@@ -57,9 +57,7 @@ export default class StyleBuilder {
   }
 
   indicator(color) {
-    this._indicator = {
-      backgroundColor: color,
-    };
+    this._indicator = color;
     return this;
   }
 
@@ -97,7 +95,7 @@ export default class StyleBuilder {
   build() {
     return {
       header: this._header,
-      indicator: this._indicator,
+      indicatorColor: this._indicator,
       body: this._body,
       link: this._link,
       primary: this._primaryHeading,

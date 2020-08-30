@@ -55,7 +55,7 @@ const FullHeader = ({ props }) => {
             aria-label="tab bar"
             variant="scrollable"
             scrollButtons="auto"
-            classes={{ indicator: classes.indicator }}
+            classes={{ indicatorColor: classes.indicatorColor }}
           >
             {
               tabs.map((tab) => (
@@ -105,7 +105,7 @@ const FullHeader = ({ props }) => {
                 horizontal: 'center',
               }}
             >
-              <div className={classes.phonePopover}>{t('Phone-Number')}</div>
+              <div id="phone-number" className={classes.phonePopover}>{t('Phone-Number')}</div>
             </Popover>
           </Tabs>
         </div>
@@ -113,18 +113,21 @@ const FullHeader = ({ props }) => {
           <IconButton
             onClick={handleFbClick}
             color="inherit"
+            id="facebook-button"
           >
             <FacebookIcon />
           </IconButton>
           <IconButton
             onClick={handleEmailClick}
             color="inherit"
+            id="email-button"
           >
             <EmailIcon />
           </IconButton>
           <IconButton
             onClick={handlePhoneClick}
             color="inherit"
+            id="phone-button"
           >
             <PhoneIcon />
           </IconButton>
