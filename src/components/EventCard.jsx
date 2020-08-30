@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import {
-  Card, CardActionArea, CardMedia, CardContent, Typography, CardActions,
+  Card, CardActionArea, CardMedia, CardContent, Typography,
 } from '@material-ui/core';
 import translateString from '../utils/StringHelper';
 
@@ -30,8 +30,10 @@ const EventCard = ({ event, handleClick }) => {
     text = `${desc.substring(0, maxDescLength - mod)}...`;
   }
 
+  const cardId = `card-${event.title}`;
+
   return (
-    <Card id="card" className={classes.card} onClick={() => handleClick(event.id)}>
+    <Card id={cardId} className={classes.card} onClick={() => handleClick(event.id)}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -41,13 +43,13 @@ const EventCard = ({ event, handleClick }) => {
           title="A Cat"
         />
         <CardContent>
-          <Typography gutterBottom variant="h6">
+          <Typography id="card-title" gutterBottom variant="h6">
             {event.title}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="h6">
+          <Typography id="card-description" variant="body2" color="textSecondary" component="h6">
             {text}
           </Typography>
-          <Typography variant="subtitle2" color="textSecondary" component="p">
+          <Typography id="card-date" variant="subtitle2" color="textSecondary" component="p">
             {event.date}
           </Typography>
         </CardContent>
