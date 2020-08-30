@@ -23,12 +23,10 @@ const HomeScreen = ({ classes }) => {
         containerClassName="youtubeContainer"
       />
       <h2 className={classes.secondary}>
-        Our Mission
+        { t('Home-Page-Mission-Title') }
       </h2>
       <p>
-        At Rose City Choral Collective, we endeavor to create quality choral music in a welcoming
-        environment that promotes learning and growth. We aim to give a memorable performance
-        experience that brings joy to both singer and listener
+        { t('Home-Page-Mission-Text') }
       </p>
     </div>
   );
