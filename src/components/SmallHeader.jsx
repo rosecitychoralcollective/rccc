@@ -71,7 +71,7 @@ const SmallHeader = ({ props }) => {
             <MenuIcon />
           </IconButton>
           <Menu
-            id="menu"
+            id="nav-menu"
             anchorEl={tabAnchorEl}
             keepMounted
             open={Boolean(tabAnchorEl)}
@@ -95,7 +95,7 @@ const SmallHeader = ({ props }) => {
             <ContactSupportIcon />
           </IconButton>
           <Menu
-            id="menu"
+            id="contact-menu"
             keepMounted
             anchorEl={contactAnchorEl}
             open={Boolean(contactAnchorEl)}
@@ -104,18 +104,21 @@ const SmallHeader = ({ props }) => {
             <MenuItem
               key="fb"
               onClick={() => handleMenuClick('fb')}
+              id="facebook-button"
             >
               <FacebookIcon />
             </MenuItem>
             <MenuItem
               key="email"
               onClick={() => handleMenuClick('email')}
+              id="email-button"
             >
               <EmailIcon />
             </MenuItem>
             <MenuItem
               key="phone"
               onClick={(evt) => handleMenuClick('phone', evt)}
+              id="phone-button"
             >
               <PhoneIcon />
             </MenuItem>
@@ -133,7 +136,7 @@ const SmallHeader = ({ props }) => {
               horizontal: 'center',
             }}
           >
-            <div className={classes.phonePopover}>{t('Phone-Number')}</div>
+            <div id="phone-number" className={classes.phonePopover}>{t('Phone-Number')}</div>
           </Popover>
         </div>
       </Toolbar>

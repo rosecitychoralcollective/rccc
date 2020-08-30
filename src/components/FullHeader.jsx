@@ -74,7 +74,7 @@ const FullHeader = ({ props }) => {
                     <MoreIcon />
                   </IconButton>
                   <Menu
-                    id="menu"
+                    id="style-menu"
                     anchorEl={styleAnchorEl}
                     keepMounted
                     open={Boolean(styleAnchorEl)}

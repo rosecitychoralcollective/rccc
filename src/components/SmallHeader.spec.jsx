@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { IconButton, Tab, Tabs } from '@material-ui/core';
-import FullHeader from './FullHeader';
+import { Menu, MenuItem, Tab, Tabs } from '@material-ui/core';
+import SmallHeader from './SmallHeader';
 import translateString from '../utils/StringHelper';
 
 const t = translateString;
@@ -33,7 +33,7 @@ describe('Full header component', () => {
   beforeEach(() => {
     jest.resetModules();
     process.env.NODE_ENV = OLD_ENV;
-    component = shallow(<FullHeader props={props} />);
+    component = shallow(<SmallHeader props={props} />);
   });
 
   afterEach(() => {
@@ -46,31 +46,22 @@ describe('Full header component', () => {
   it('Renders without crashing', () => {
     expect(component.html()).toMatchSnapshot();
   });
-  it('Does not render the style selector when env is not development', () => {
+  it('Does not render the style menu', () => {
     expect(component.exists('#style-menu')).not.toBe(true);
-    process.env.NODE_ENV = 'production';
-    const devComponent = shallow(<FullHeader props={props} />);
-    expect(devComponent.exists('#style-menu')).not.toBe(true);
   });
-  it('Renders the style selector when env is development', () => {
-    process.env.NODE_ENV = 'development';
-    const devComponent = shallow(<FullHeader props={props} />);
-    expect(devComponent.exists('#style-menu')).toBe(true);
+  it('Does not render any tabs', () => {
+    expect(component.find(Tab)).toHaveLength(0);
+    expect(component.find(Tabs)).toHaveLength(0);
   });
-  it('Renders the same number of tabs as given in props', () => {
-    expect(component.find(Tab)).toHaveLength(tabs.length);
+  it('Renders two Menu components', () => {
+    expect(component.find(Menu)).toHaveLength(2);
   });
-  it('Sets the name of a tab to the name given', () => {
-    expect(component.find(Tab).some('[label="asdf"]')).toBe(true);
-    expect(component.find(Tab).some('[label="fdsa"]')).toBe(true);
-  });
-  it('Calls changetabs when onChange state changes', () => {
-    component.find(Tabs).simulate('change');
-    expect(changeTabs).toHaveBeenCalled();
-  });
-  it('Renders three IconButton components', () => {
-    expect(component.find(IconButton)).toHaveLength(3);
-  });
+  it('Has a nav menu component', () => {
+    expect(component.exists('#nav-menu')).toBe(true);
+  })
+  it('Has a contact menu component', () => {
+    expect(component.exists('#contact-menu')).toBe(true);
+  })
   it('Clicks the facebook button and no other buttons', () => {
     component.find('#facebook-button').simulate('click');
     expect(handleFbClick).toHaveBeenCalled();
@@ -91,5 +82,9 @@ describe('Full header component', () => {
   });
   it('Displays a phone number', () => {
     expect(component.find('#phone-number').text()).toBe(t('Phone-Number'));
+  });
+  it('Clicks tabs when tab menu items are clicked', () => {
+    component.find(MenuItem).first().simulate('click');
+    expect(changeTabs).toHaveBeenCalled();
   });
 });
